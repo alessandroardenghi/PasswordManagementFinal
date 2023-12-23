@@ -75,7 +75,7 @@ struct NewItemView: View {
 
                 FormView(title: "Address", variable: $viewModel.address, secure: false, placeholder: "Enter address")
                 
-                LoginButtonView(title: "Save", background: .green.opacity(0.4)) {
+                LoginButtonView(title: "Save", background: .green) {
                                 if viewModel.validateWebsite() {
                                     if !isDuplicate() {
                                         save()

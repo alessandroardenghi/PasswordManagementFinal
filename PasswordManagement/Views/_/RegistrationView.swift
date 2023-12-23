@@ -14,6 +14,7 @@ struct RegistrationView: View {
     @StateObject var viewModel = RegistrationViewViewModel()
     @Environment(\.colorScheme) var colorScheme
     @Binding var is_registered: Bool
+    @State var visible = false
 
     var body: some View {
         ZStack {
@@ -36,14 +37,31 @@ struct RegistrationView: View {
                     .autocorrectionDisabled()
                     .border(.red, width: viewModel.error.isEmpty ? 0 : 1)
 
-                SecureField("New Password", text: $viewModel.password)
-                    .padding()
-                    .frame(width: 300, height: 50)
-                    .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
-                    .cornerRadius(10)
-                    .border(viewModel.password.count >= 12 ? Color(UIColor.systemGreen) :
-                            viewModel.password.count >= 8 ? Color.yellow :
-                            Color.red, width: viewModel.password.isEmpty ? 0 : 1)
+                ZStack(alignment: .trailing) {
+    
+                    if !visible {
+                        SecureField("Password", text: $viewModel.password)
+                            .padding()
+                            .frame(width: 300, height: 50)
+                            .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                            .cornerRadius(10)
+                            .border(.red, width: viewModel.error.isEmpty ? 0.0 : 1.0)
+                    } else {
+                        TextField("Password", text: $viewModel.password)
+                            .padding()
+                            .frame(width: 300, height: 50)
+                            .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                            .cornerRadius(10)
+                            .border(.red, width: viewModel.error.isEmpty ? 0.0 : 1.0)
+                    }
+                    
+                    Button(action: {
+                                    visible.toggle()
+                                }) {
+                                    Image(systemName: visible ? "eye" : "eye.slash")
+                                        .foregroundColor(.blue)
+                                }
+                }
                 
                 let passwordStrength = viewModel.passwordStrengthText()
                 Text(passwordStrength.text)
