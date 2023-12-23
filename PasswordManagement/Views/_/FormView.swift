@@ -15,18 +15,29 @@ struct FormView: View {
     let secure: Bool
     var placeholder: String
     @State var visible = false
+    @State var locked = false
 
     var body: some View {
         VStack (spacing: 2) {
-            Text(title)
-                .bold()
-                .padding()
-            
+            HStack {
+                Text(title)
+                    .bold()
+                    .padding()
+                if secure {
+                    Button(action: {
+                        locked.toggle()
+                    }) {
+                        Image(systemName: locked ? "lock" : "lock.open")
+                            .foregroundColor(.blue)
+                    }
+                }
+            }
             if secure {
                 ZStack(alignment: .trailing) {
                     if visible {
                         TextField(placeholder, text: $variable)
                             .padding()
+                            .disabled(locked)
                             .frame(width: 300, height: 50)
                             .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
                             .cornerRadius(10)
@@ -35,6 +46,7 @@ struct FormView: View {
                     } else {
                         SecureField(placeholder, text: $variable)
                             .padding()
+                            .disabled(locked)
                             .frame(width: 300, height: 50)
                             .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
                             .cornerRadius(10)
