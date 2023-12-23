@@ -15,6 +15,8 @@ class NewItemViewViewModel: ObservableObject {
     @Published var website: String = ""
     @Published var username: String = ""
     @Published var password: String = ""
+    @Published var email: String = ""
+    @Published var weblink: String = ""
     @Published var subscription: Bool = false
     @Published var subscription_date: Date = Date()
     @Published var name: String = ""
@@ -28,7 +30,7 @@ class NewItemViewViewModel: ObservableObject {
     
     // Function to validate the website URL
     func validateWebsite() -> Bool {
-        if website.hasPrefix("http://") || website.hasPrefix("https://") {
+        if weblink.hasPrefix("http://") || weblink.hasPrefix("https://") {
             websiteError = ""
             return true
         } else {

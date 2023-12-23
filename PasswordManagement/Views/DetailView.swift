@@ -23,7 +23,11 @@ struct DetailView: View {
                     .font(.system(size: 30))
                     .padding()
                 
-                FormView(title: "Website", variable: $variable.website, secure: false, placeholder: "https://example.com")
+                FormView(title: "Website", variable: $variable.website, secure: false, placeholder: "Enter website")
+                
+                FormView(title: "Email", variable: $variable.email, secure: false, placeholder: "Enter email")
+                
+                FormView(title: "Weblink", variable: $variable.weblink, secure: false, placeholder: "https://yourwebsite.com")
                 
                 FormView(title: "Username", variable: $variable.username, secure: false, placeholder: "Enter username")
                 

@@ -26,7 +26,13 @@ struct NewItemView: View {
                                     .foregroundColor(.red)
                                     .padding(.top)
                 
-                FormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "https://yourwebsitedomain.com")
+                FormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name")
+                
+                FormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email")
+                
+                FormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username")
+                
+                FormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com")
                 
                 if !viewModel.websiteError.isEmpty {
                     Text(viewModel.websiteError)
@@ -34,7 +40,6 @@ struct NewItemView: View {
                         .padding()
                 }
                 
-                FormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username")
 
                 FormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password")
 
@@ -100,6 +105,8 @@ struct NewItemView: View {
     func save() {
             let item = LoginInfoItem(website: viewModel.website,
                                      username: viewModel.username,
+                                     email: viewModel.email,
+                                     weblink: viewModel.weblink,
                                      password: viewModel.password,
                                      subscription: viewModel.subscription,
                                      subscription_date: viewModel.subscription_date,

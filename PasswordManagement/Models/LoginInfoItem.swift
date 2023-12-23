@@ -14,6 +14,8 @@ final class LoginInfoItem : Identifiable {
     @Attribute(.unique) var id: String
     var website: String
     var username: String
+    var email: String
+    var weblink: String
     var password: String
     var subscription: Bool
     var subscription_date: Date = Date()
@@ -23,6 +25,8 @@ final class LoginInfoItem : Identifiable {
     
     init(website: String,
          username: String,
+         email: String,
+         weblink: String,
          password: String,
          subscription: Bool,
          subscription_date: Date = Date(),
@@ -33,6 +37,8 @@ final class LoginInfoItem : Identifiable {
         self.id = UUID().uuidString
         self.website = website
         self.username = username
+        self.email = email
+        self.weblink = weblink
         self.password = password
         self.subscription = subscription
         self.subscription_date = subscription_date
