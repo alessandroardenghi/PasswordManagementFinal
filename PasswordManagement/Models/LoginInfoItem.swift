@@ -19,9 +19,10 @@ final class LoginInfoItem : Identifiable {
     var password: String
     var subscription: Bool
     var subscription_date: Date = Date()
-    var name: String
-    var last_name: String
-    var address: String
+    var full_name: Bool
+    var address: Bool
+    var credit_card: Bool
+    var date_of_birth: Bool
     
     init(website: String,
          username: String,
@@ -30,9 +31,10 @@ final class LoginInfoItem : Identifiable {
          password: String,
          subscription: Bool,
          subscription_date: Date = Date(),
-         name: String,
-         last_name: String,
-         address: String) {
+         full_name: Bool,
+         address: Bool,
+         credit_card: Bool,
+         date_of_birth: Bool) {
         
         self.id = UUID().uuidString
         self.website = website
@@ -42,8 +44,9 @@ final class LoginInfoItem : Identifiable {
         self.password = password
         self.subscription = subscription
         self.subscription_date = subscription_date
-        self.name = name
-        self.last_name = last_name
+        self.full_name = full_name
         self.address = address
+        self.credit_card = credit_card
+        self.date_of_birth = date_of_birth
     }
 }

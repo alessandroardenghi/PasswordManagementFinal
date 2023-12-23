@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		13DADA6E2B3602BD00F6E566 /* webpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DADA6D2B3602BD00F6E566 /* webpage.swift */; };
+		1754D54A2B374356005359B1 /* NewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D5492B374356005359B1 /* NewFormView.swift */; };
+		1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D54D2B374A3E005359B1 /* CheckBoxView.swift */; };
 		17949C2B2B34BC8600CCABE0 /* PasswordManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */; };
 		17949C2F2B34BC8600CCABE0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2E2B34BC8600CCABE0 /* Item.swift */; };
 		17949C312B34BC8700CCABE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17949C302B34BC8700CCABE0 /* Assets.xcassets */; };
@@ -51,6 +53,8 @@
 
 /* Begin PBXFileReference section */
 		13DADA6D2B3602BD00F6E566 /* webpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webpage.swift; sourceTree = "<group>"; };
+		1754D5492B374356005359B1 /* NewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFormView.swift; sourceTree = "<group>"; };
+		1754D54D2B374A3E005359B1 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		17949C272B34BC8600CCABE0 /* PasswordManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementApp.swift; sourceTree = "<group>"; };
 		17949C2E2B34BC8600CCABE0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 		17C94A3A2B35ACB4006AA698 /* _ */ = {
 			isa = PBXGroup;
 			children = (
+				1754D54D2B374A3E005359B1 /* CheckBoxView.swift */,
+				1754D5492B374356005359B1 /* NewFormView.swift */,
 				17949C5D2B34BCCE00CCABE0 /* LoginButtonView.swift */,
 				17949C5C2B34BCCE00CCABE0 /* FormView.swift */,
 				17949C5A2B34BCCE00CCABE0 /* LoginView.swift */,
@@ -345,8 +351,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1754D54A2B374356005359B1 /* NewFormView.swift in Sources */,
 				17949C642B34BCCE00CCABE0 /* FormView.swift in Sources */,
 				17949C672B34BCCE00CCABE0 /* ContentView.swift in Sources */,
+				1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */,
 				17949C6C2B34BD0100CCABE0 /* RegistrationViewViewModel.swift in Sources */,
 				17949C622B34BCCE00CCABE0 /* LoginView.swift in Sources */,
 				17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */,

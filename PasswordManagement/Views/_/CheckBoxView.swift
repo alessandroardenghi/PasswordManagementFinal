@@ -8,23 +8,29 @@
 import Foundation
 import SwiftUI
 
-struct GeneralPasswordButtonView: View {
+struct CheckBoxView: View {
     
     let background: Color
-    @State var variable: Bool
-    let image: String
-    let action: () -> Void
+    @Binding var variable: Bool
+    let text: String
     
     var body: some View {
         
-        Button(action: action) {
-            Image(systemName: image)
-                .foregroundColor(.white)
+        HStack(spacing: 20) {
+            Text(text)
+            Spacer()
+            Button(action: {
+                variable.toggle()
+            }) {
+                Image(systemName: !variable ? "square" : "checkmark.square.fill")
+                    .foregroundColor(.white)
+            }
+            
+            .frame(width: 50, height: 30)
+            .background(.blue)
+            .cornerRadius(10)
         }
-        
-        .frame(width: 50, height: 30)
-        .background(background)
-        .cornerRadius(10)
+        .padding(.horizontal, 50)
             }
         }
 

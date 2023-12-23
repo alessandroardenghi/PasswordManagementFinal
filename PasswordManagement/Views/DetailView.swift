@@ -14,6 +14,7 @@ struct DetailView: View {
     @State var value = 0.0
     @State var variable: LoginInfoItem
     @State private var showWebView = false
+    @State var extras: Bool = false
     
     var body: some View {
         ScrollView {
@@ -23,15 +24,15 @@ struct DetailView: View {
                     .font(.system(size: 30))
                     .padding()
                 
-                FormView(title: "Website", variable: $variable.website, secure: false, placeholder: "Enter website")
+                NewFormView(title: "Website", variable: $variable.website, secure: false, placeholder: "Enter website")
                 
-                FormView(title: "Email", variable: $variable.email, secure: false, placeholder: "Enter email")
+                NewFormView(title: "Email", variable: $variable.email, secure: false, placeholder: "Enter email")
                 
-                FormView(title: "Weblink", variable: $variable.weblink, secure: false, placeholder: "https://yourwebsite.com")
+                NewFormView(title: "Weblink", variable: $variable.weblink, secure: false, placeholder: "https://yourwebsite.com")
                 
-                FormView(title: "Username", variable: $variable.username, secure: false, placeholder: "Enter username")
+                NewFormView(title: "Username", variable: $variable.username, secure: false, placeholder: "Enter username")
                 
-                FormView(title: "Password", variable: $variable.password, secure: true, placeholder: "Enter password")
+                NewFormView(title: "Password", variable: $variable.password, secure: true, placeholder: "Enter password")
                 
                 Text("Subscription")
                     .bold()
@@ -55,11 +56,29 @@ struct DetailView: View {
                         .frame(width: 100)
                 }
                 
-                FormView(title: "Name", variable: $variable.name, secure: false, placeholder: "Enter name")
+                Text("Extras")
+                    .bold()
+                    .padding()
+                Picker("Select", selection: $extras) {
+                    Text("Yes").tag(true)
+                    Text("No").tag(false)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                .frame(maxWidth: 320)
                 
-                FormView(title: "Last Name", variable: $variable.last_name, secure: false, placeholder: "Enter last name")
-                
-                FormView(title: "Address", variable: $variable.address, secure: false, placeholder: "Enter address")
+                if extras {
+                    VStack(alignment: .leading) {
+                        CheckBoxView(background: .blue, variable: $variable.full_name, text: "Full Name")
+                        
+                        CheckBoxView(background: .blue, variable: $variable.address, text: "Address")
+                        
+                        CheckBoxView(background: .blue, variable: $variable.credit_card, text: "Credit Card")
+                        
+                        CheckBoxView(background: .blue, variable: $variable.date_of_birth, text: "Date of Birth")
+                        
+                    }
+                }
                 
                 Button("Open Web Page") {
                                    showWebView = true

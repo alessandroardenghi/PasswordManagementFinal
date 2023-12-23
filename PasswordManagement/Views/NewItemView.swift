@@ -26,13 +26,13 @@ struct NewItemView: View {
                                     .foregroundColor(.red)
                                     .padding(.top)
                 
-                FormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name")
+                NewFormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name")
                 
-                FormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email")
+                NewFormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email")
                 
-                FormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username")
+                NewFormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username")
                 
-                FormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com")
+                NewFormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com")
                 
                 if !viewModel.websiteError.isEmpty {
                     Text(viewModel.websiteError)
@@ -41,7 +41,7 @@ struct NewItemView: View {
                 }
                 
 
-                FormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password")
+                NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password")
 
                 
                 
@@ -69,11 +69,33 @@ struct NewItemView: View {
                         
                 }
                 
-                FormView(title: "Name", variable: $viewModel.name, secure: false, placeholder: "Enter name")
-
-                FormView(title: "Last Name", variable: $viewModel.last_name, secure: false, placeholder: "Enter last name")
-
-                FormView(title: "Address", variable: $viewModel.address, secure: false, placeholder: "Enter address")
+                Text("Extras")
+                    .bold()
+                    .padding()
+                Picker("Select", selection: $viewModel.extras) {
+                    Text("Yes").tag(true)
+                    Text("No").tag(false)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                .frame(maxWidth: 320)
+                
+                if viewModel.extras {
+                    VStack(alignment: .leading) {
+                        
+                        CheckBoxView(background: .blue, variable: $viewModel.full_name, text: "Full Name")
+                        
+                        CheckBoxView(background: .blue, variable: $viewModel.address, text: "Address")
+                        
+                        CheckBoxView(background: .blue, variable: $viewModel.credit_card, text: "Credit Card")
+                        
+                        CheckBoxView(background: .blue, variable: $viewModel.date_of_birth, text: "Date of Birth")
+                        
+                    }
+                
+                        
+                }
+                
                 
                 LoginButtonView(title: "Save", background: .green) {
                                 if viewModel.validateWebsite() {
@@ -110,9 +132,10 @@ struct NewItemView: View {
                                      password: viewModel.password,
                                      subscription: viewModel.subscription,
                                      subscription_date: viewModel.subscription_date,
-                                     name: viewModel.name,
-                                     last_name: viewModel.last_name,
-                                     address: viewModel.address)
+                                     full_name: viewModel.full_name,
+                                     address: viewModel.address,
+                                     credit_card: viewModel.credit_card,
+                                     date_of_birth: viewModel.date_of_birth)
             context.insert(item)
         }
 }

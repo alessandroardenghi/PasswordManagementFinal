@@ -19,12 +19,14 @@ class NewItemViewViewModel: ObservableObject {
     @Published var weblink: String = ""
     @Published var subscription: Bool = false
     @Published var subscription_date: Date = Date()
-    @Published var name: String = ""
-    @Published var last_name: String = ""
-    @Published var address: String = ""
     @Published var websiteError: String = ""
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
+    @Published var extras: Bool = false
+    @Published var full_name: Bool = false
+    @Published var address: Bool = false
+    @Published var credit_card: Bool = false
+    @Published var date_of_birth: Bool = false
     
     init() {}
     
