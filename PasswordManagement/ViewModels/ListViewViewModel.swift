@@ -6,3 +6,13 @@
 //
 
 import Foundation
+import SwiftUI
+import SwiftData
+
+class ListViewViewModel: ObservableObject {
+    @Published var new_item = false
+    
+    init() {}
+    
+
+}

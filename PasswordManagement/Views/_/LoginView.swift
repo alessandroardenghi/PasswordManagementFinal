@@ -5,6 +5,8 @@
 //  Created by Alessandro Ardenghi on 17/12/23.
 //
 
+// ALE B: login ok, forse cambiare grafica ma overall CHECKED
+
 import Foundation
 import SwiftUI
 

@@ -14,7 +14,7 @@ struct BackView: View {
             
             Rectangle()
                 .frame(height:100)
-                .foregroundColor(.orange)
+                .foregroundColor(.blue.opacity(0.2))
                 .edgesIgnoringSafeArea(.top)
             
             
@@ -22,7 +22,7 @@ struct BackView: View {
             Rectangle()
                 .frame(width: 1000, height: 100)
                 .position(y: 650)
-                .foregroundColor(.orange)
+                .foregroundColor(.blue.opacity(0.2))
                 .edgesIgnoringSafeArea(.bottom)
         }
         

@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 import SwiftUI
 
 class LoginViewViewModel: ObservableObject {

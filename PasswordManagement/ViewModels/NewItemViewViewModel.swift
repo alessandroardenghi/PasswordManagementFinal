@@ -5,13 +5,13 @@
 //  Created by Alessandro Ardenghi on 20/12/23.
 //
 
+// ALE B: make sure the URL is valid
+
 import Foundation
 import SwiftUI
 import SwiftData
 
 class NewItemViewViewModel: ObservableObject {
-    
-    @Environment(\.modelContext) private var context
     @Published var website: String = ""
     @Published var username: String = ""
     @Published var password: String = ""
@@ -20,21 +20,32 @@ class NewItemViewViewModel: ObservableObject {
     @Published var name: String = ""
     @Published var last_name: String = ""
     @Published var address: String = ""
+    @Published var websiteError: String = ""
+    @Published var showAlert: Bool = false
+    @Published var alertMessage: String = ""
     
     init() {}
     
-    func save() {
-        let item = LoginInfoItem(website: website,
-                                 username: username,
-                                 password: password,
-                                 subscription: subscription, 
-                                 subscription_date: subscription_date,
-                                 name: name,
-                                 last_name: last_name,
-                                 address: address)
-        
+    // Function to validate the website URL
+    func validateWebsite() -> Bool {
+        if website.hasPrefix("http://") || website.hasPrefix("https://") {
+            websiteError = ""
+            return true
+        } else {
+            websiteError = "Invalid form. Write the URL as: http://yourwebsite.com"
+            showAlertWithTimer()
+            return false
+        }
     }
-    
-    
-}
 
+    func showAlertWithTimer() {
+        self.showAlert = true
+        self.alertMessage = "Invalid URL format. Please correct it."
+
+        // to dismiss the alert after 3 seconds, so the user can actually read the message
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.showAlert = false
+        }
+    }
+
+}

@@ -8,10 +8,10 @@
 import Foundation
 import SwiftData
 
-
-class LoginInfoItem {
+@Model
+final class LoginInfoItem : Identifiable {
     
-    var id: String
+    @Attribute(.unique) var id: String
     var website: String
     var username: String
     var password: String
