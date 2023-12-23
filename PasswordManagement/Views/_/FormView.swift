@@ -14,6 +14,7 @@ struct FormView: View {
     @Environment(\.colorScheme) var colorScheme
     let secure: Bool
     var placeholder: String
+    @State var visible = false
 
     var body: some View {
         VStack (spacing: 2) {
@@ -22,13 +23,32 @@ struct FormView: View {
                 .padding()
             
             if secure {
-                SecureField(placeholder, text: $variable)
-                    .padding()
-                    .frame(width: 300, height: 50)
-                    .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
-                    .cornerRadius(10)
-                    .autocapitalization(.none)
-                    .autocorrectionDisabled()
+                ZStack(alignment: .trailing) {
+                    if visible {
+                        TextField(placeholder, text: $variable)
+                            .padding()
+                            .frame(width: 300, height: 50)
+                            .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                            .cornerRadius(10)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled()
+                    } else {
+                        SecureField(placeholder, text: $variable)
+                            .padding()
+                            .frame(width: 300, height: 50)
+                            .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                            .cornerRadius(10)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled()
+                    }
+                    
+                    Button(action: {
+                        visible.toggle()
+                    }) {
+                        Image(systemName: visible ? "eye" : "eye.slash")
+                            .foregroundColor(.blue)
+                    }
+                }
             } else {
                 TextField(placeholder, text: $variable)
                     .padding()

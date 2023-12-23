@@ -65,7 +65,7 @@ struct DetailView: View {
                                    showWebView = true
                                }
                                .sheet(isPresented: $showWebView) {
-                                   if let url = URL(string: variable.website) {
+                                   if let url = URL(string: variable.weblink) {
                                        WebView(url: url)
                                    }
                                }
