@@ -46,6 +46,8 @@ struct LoginView: View {
                             .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
                             .cornerRadius(10)
                             .border(.red, width: viewModel.error.isEmpty ? 0.0 : 1.0)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled()
                     } else {
                         TextField("Password", text: $viewModel.password)
                             .padding()
@@ -53,6 +55,8 @@ struct LoginView: View {
                             .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
                             .cornerRadius(10)
                             .border(.red, width: viewModel.error.isEmpty ? 0.0 : 1.0)
+                            .autocapitalization(.none)
+                            .autocorrectionDisabled()
                     }
                     
                     Button(action: {
