@@ -23,6 +23,7 @@ final class LoginInfoItem : Identifiable {
     var address: Bool
     var credit_card: Bool
     var date_of_birth: Bool
+    var bookmark: Bool
     
     init(website: String,
          username: String,
@@ -48,5 +49,6 @@ final class LoginInfoItem : Identifiable {
         self.address = address
         self.credit_card = credit_card
         self.date_of_birth = date_of_birth
+        self.bookmark = false
     }
 }

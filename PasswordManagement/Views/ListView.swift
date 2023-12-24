@@ -20,21 +20,38 @@ struct ListView: View {
         NavigationView {
             VStack {
                 List {
-                    ForEach(items) {item in
+                    ForEach(sorted_items) {item in
                         NavigationLink(destination: DetailView(variable: item)) {
-                            VStack(alignment: .leading) {
-                                Text("\(item.website)")
-                                    .font(.headline)
+                            HStack {
+                                VStack(alignment: .leading) {
+                                    Text("\(item.website)")
+                                        .font(.headline)
                                     
-                                Text("\(item.username)")
-                                    .font(.subheadline)
+                                    Text("\(item.username)")
+                                        .font(.subheadline)
                                     
+                                }
+                                Spacer()
+                                Image(systemName: item.bookmark ? "bookmark.fill" : "bookmark")
+                                    .foregroundColor(.blue)
+                                
+                                
                             }
-                        }
-                    }
-                    .onDelete {indexes in
-                        for index in indexes {
-                            delete_items(item: items[index])
+                            .swipeActions {
+                                Button(role: .destructive) {
+                                    context.delete(item)
+                                } label: {
+                                    Label("Delete", systemImage: "trash.fill")
+                                }
+                            }
+                            .swipeActions {
+                                Button() {
+                                    item.bookmark.toggle()
+                                } label: {
+                                    Label("Bookmark", systemImage: "bookmark.fill")
+                                }
+                                .tint(.blue)
+                            }
                         }
                     }
                     
@@ -58,9 +75,11 @@ struct ListView: View {
         }
     }
     
-    func delete_items(item: LoginInfoItem) {
-        context.delete(item)
-    }
+    var sorted_items: [LoginInfoItem] {
+            let trueConditionItems = items.filter { $0.bookmark }
+            let falseConditionItems = items.filter { !$0.bookmark }
+            return trueConditionItems + falseConditionItems
+        }
 
 }
 
