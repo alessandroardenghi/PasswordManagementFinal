@@ -44,7 +44,6 @@ struct NewItemView: View {
                 NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password")
 
                 
-                
                 Text("Subscription")
                     .bold()
                     .padding()

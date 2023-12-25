@@ -14,18 +14,21 @@ struct NewFormView: View {
     let secure: Bool
     var placeholder: String
     @State var visible = false
-    @State var locked = false
+    @State var locked = true
     @State var change_password = false
+    @State private var length = 8
+    @State var special_characters: Bool = true
+    @State var numbers: Bool = true
 
     var body: some View {
         VStack (spacing: 2) {
-           
+            
             Text(title)
                 .bold()
                 .padding()
             
             if secure {
-
+                
                 if visible {
                     TextField(placeholder, text: $variable)
                         .padding()
@@ -59,7 +62,7 @@ struct NewFormView: View {
                     .frame(width: 50, height: 30)
                     .background(.blue)
                     .cornerRadius(10)
-                        
+                    
                     // BUTTON TO LOCK PASSWORD
                     Button(action: {
                         locked.toggle()
@@ -105,7 +108,16 @@ struct NewFormView: View {
                     .autocapitalization(.none)
                     .autocorrectionDisabled()
             }
+            
+        }
+        
+        if change_password && !locked {
+               
+            PasswordOptionsView(variable: $variable)
+            .padding()
+            .frame(maxWidth: 350)
         }
     }
+    
 }
 
