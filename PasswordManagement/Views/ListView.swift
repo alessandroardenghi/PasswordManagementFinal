@@ -14,13 +14,13 @@ struct ListView: View {
     @Environment(\.modelContext) var context
     @StateObject var viewModel = ListViewViewModel()
     @Query private var items: [LoginInfoItem]
+    @State var search: String = ""
     
     var body: some View {
         
         NavigationView {
-            VStack {
                 List {
-                    ForEach(sorted_items) {item in
+                    ForEach(searchable_items) {item in
                         NavigationLink(destination: DetailView(variable: item)) {
                             HStack {
                                 VStack(alignment: .leading) {
@@ -34,8 +34,6 @@ struct ListView: View {
                                 Spacer()
                                 Image(systemName: item.bookmark ? "bookmark.fill" : "bookmark")
                                     .foregroundColor(.blue)
-                                
-                                
                             }
                             .swipeActions {
                                 Button(role: .destructive) {
@@ -54,11 +52,10 @@ struct ListView: View {
                             }
                         }
                     }
-                    
-                }
                 
             }
             .navigationTitle("Login Info")
+            .searchable(text: $search)
             .toolbar {
                 Button {
                     viewModel.new_item = true
@@ -79,6 +76,14 @@ struct ListView: View {
             let trueConditionItems = items.filter { $0.bookmark }
             let falseConditionItems = items.filter { !$0.bookmark }
             return trueConditionItems + falseConditionItems
+        }
+    
+    var searchable_items: [LoginInfoItem] {
+            if search.isEmpty {
+                return sorted_items
+            } else {
+                return sorted_items.filter { $0.website.lowercased().contains(search.lowercased()) }
+            }
         }
 
 }
