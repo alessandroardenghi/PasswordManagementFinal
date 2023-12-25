@@ -50,9 +50,10 @@ struct LockedFormView: View {
                         .autocorrectionDisabled()
                 }
                 
-                HStack(spacing: 25) {
+                
                     
-                    // BUTTON TO SEE PASSWORD
+                // BUTTON TO SEE PASSWORD
+                HStack{
                     Button(action: {
                         visible.toggle()
                     }) {
@@ -63,8 +64,12 @@ struct LockedFormView: View {
                     .frame(width: 50, height: 30)
                     .background(.blue)
                     .cornerRadius(10)
-                    
-                    // BUTTON TO LOCK PASSWORD
+                    Spacer()
+                    Text("Hide/show password")
+                }
+                .frame(width: 300)
+                // BUTTON TO LOCK PASSWORD
+                HStack{
                     Button(action: {
                         locked.toggle()
                     }) {
@@ -75,8 +80,12 @@ struct LockedFormView: View {
                     .frame(width: 50, height: 30)
                     .background(.blue)
                     .cornerRadius(10)
-                    
-                    // BUTTON TO CHANGE PASSWORD
+                    Spacer()
+                    Text("Lock/unlock password")
+                }
+                .frame(width: 300)
+                // BUTTON TO CHANGE PASSWORD
+                HStack {
                     Button(action: {
                         change_password.toggle()
                     }) {
@@ -87,8 +96,12 @@ struct LockedFormView: View {
                     .frame(width: 50, height: 30)
                     .background(.blue)
                     .cornerRadius(10)
-                    
-                    // BUTTON TO COPY PASSWORD
+                    Spacer()
+                    Text("Enable the password generator")
+                }
+                .frame(width: 300)
+                // BUTTON TO COPY PASSWORD
+                HStack {
                     Button(action: {
                         UIPasteboard.general.string = variable
                     }) {
@@ -99,10 +112,14 @@ struct LockedFormView: View {
                     .frame(width: 50, height: 30)
                     .background(.blue)
                     .cornerRadius(10)
+                    Spacer()
+                    Text("Copy password")
                 }
+                .frame(width: 300)
             } else {
                 TextField(placeholder, text: $variable)
                     .padding()
+                    .bold()
                     .frame(width: 300, height: 50)
                     .disabled(true)
                     .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
