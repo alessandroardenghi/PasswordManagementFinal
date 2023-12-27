@@ -9,12 +9,26 @@ import Foundation
 import SwiftUI
 import SwiftData
 
+// protocol used for web automation --> triggered when an action is called
+protocol WebAutomationDelegate {
+    func performAction(username: String, password: String, url: String, actionType: ActionType)
+}
+// callable actions by the user --> these are the buttons the user sees and that trigger
+// our protocol. if the automation fails, we have a backup case where the user manually
+// enters all the data
+enum ActionType {
+    case changePassword
+    case deleteAccount
+    case deleteSubscription
+}
+
 struct DetailView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var value = 0.0
     @State var variable: LoginInfoItem
     @State private var showWebView = false
     @State var extras: Bool = false
+    var automationDelegate: WebAutomationDelegate?
     
     var body: some View {
         ScrollView {
@@ -54,6 +68,19 @@ struct DetailView: View {
                         .datePickerStyle(DefaultDatePickerStyle())
                         .padding(.horizontal)
                         .frame(width: 100)
+
+                    Spacer()
+                    
+                    Button(action: {
+                                        performWebAction(actionType: .deleteSubscription)
+                                    }) {
+                                        Text("Delete Subscription")
+                                            .frame(width: 250, height: 30)
+                                            .padding()
+                                            .foregroundColor(.white)
+                                            .background(Color.blue)
+                                            .cornerRadius(10)
+                                    }
                 }
                 
                 Text("Extras")
@@ -80,16 +107,43 @@ struct DetailView: View {
                     }
                 }
                 
-                Button("Open Web Page") {
-                                   showWebView = true
-                               }
-                               .sheet(isPresented: $showWebView) {
-                                   if let url = URL(string: variable.weblink) {
-                                       WebView(url: url)
-                                   }
-                               }
+                Button(action: {
+                            showWebView = true
+                            performWebAction(actionType: .changePassword)
+                        }) {
+                            Text("Change Password")
+                                .frame(width: 250, height: 30)
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                        }
+                        .sheet(isPresented: $showWebView) {
+                            if let url = URL(string: variable.weblink) {
+                                WebView(url: url, username: variable.username, password: variable.password)
+                            }
+                        }
+                
+                Spacer()
+                
+                Button(action: {
+                                    performWebAction(actionType: .deleteAccount)
+                                }) {
+                                    Text("Delete Account")
+                                        .frame(width: 250, height: 30)
+                                        .padding()
+                                        .foregroundColor(.white)
+                                        .background(Color.blue)
+                                        .cornerRadius(10)
+                                }
             }
             .padding(20)
         }
     }
+    private func performWebAction(actionType: ActionType) {
+                automationDelegate?.performAction(username: variable.username,
+                                                  password: variable.password,
+                                                  url: variable.weblink,
+                                                  actionType: actionType)
+            }
 }
