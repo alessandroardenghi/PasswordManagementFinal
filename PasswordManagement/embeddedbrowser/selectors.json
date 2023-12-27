@@ -1,0 +1,18 @@
+{
+    "https://www.instagram.com/accounts/login/": {
+        "username_field": "//*[@id='loginForm']/div/div[1]/div/label/input",
+        "password_field": "//*[@id='loginForm']/div/div[2]/div/label/input",
+        "login_button": "//*[@id='loginForm']/div/div[3]",
+        "popup_selector": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]"
+    }
+    
+    "https://twitter.com/i/flow/login": {
+        "username_field": "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input",
+        "password_field": "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[2]/div/label/div/div[2]",
+        "login_button": "//*[@id='react-root']/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[5]/a/div",
+        "popup_selector": "//*[@id='layers']/div/div/div/div/div/div[2]/div[2]/div/span/span"
+    }
+    
+    
+}
+
