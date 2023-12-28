@@ -24,15 +24,15 @@ struct DetailView: View {
                     .font(.system(size: 30))
                     .padding()
                 
-                NewFormView(title: "Website", variable: $variable.website, secure: false, placeholder: "Enter website")
+                NewFormView(title: "Website", variable: $variable.website, secure: false, placeholder: "Enter website", uuid: $variable.id)
                 
-                NewFormView(title: "Email", variable: $variable.email, secure: false, placeholder: "Enter email")
+                NewFormView(title: "Email", variable: $variable.email, secure: false, placeholder: "Enter email", uuid: $variable.id)
                 
-                NewFormView(title: "Weblink", variable: $variable.weblink, secure: false, placeholder: "https://yourwebsite.com")
+                NewFormView(title: "Weblink", variable: $variable.weblink, secure: false, placeholder: "https://yourwebsite.com", uuid: $variable.id)
                 
-                NewFormView(title: "Username", variable: $variable.username, secure: false, placeholder: "Enter username")
+                NewFormView(title: "Username", variable: $variable.username, secure: false, placeholder: "Enter username", uuid: $variable.id)
                 
-                NewFormView(title: "Password", variable: $variable.password, secure: true, placeholder: "Enter password")
+                NewFormView(title: "Password", variable: $variable.password, secure: true, placeholder: "Enter password", uuid: $variable.id)
                 
                 Text("Subscription")
                     .bold()
@@ -81,15 +81,16 @@ struct DetailView: View {
                 }
                 
                 Button("Open Web Page") {
-                                   showWebView = true
-                               }
-                               .sheet(isPresented: $showWebView) {
-                                   if let url = URL(string: variable.weblink) {
-                                       WebView(url: url)
-                                   }
-                               }
+                    showWebView = true
+                }
+                .sheet(isPresented: $showWebView) {
+                    if let url = URL(string: variable.weblink) {
+                        WebView(url: url)
+                    }
+                }
             }
             .padding(20)
         }
     }
+    
 }

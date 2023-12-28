@@ -34,6 +34,7 @@
 		17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A382B35A44F006AA698 /* ListViewViewModel.swift */; };
 		17C94A3C2B35C349006AA698 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A3B2B35C349006AA698 /* DetailView.swift */; };
 		17C94A3E2B35C444006AA698 /* ButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A3D2B35C444006AA698 /* ButtonListView.swift */; };
+		17C9890C2B3CC1D60043ECDD /* NewFormViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9890B2B3CC1D60043ECDD /* NewFormViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		17C94A382B35A44F006AA698 /* ListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewViewModel.swift; sourceTree = "<group>"; };
 		17C94A3B2B35C349006AA698 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		17C94A3D2B35C444006AA698 /* ButtonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListView.swift; sourceTree = "<group>"; };
+		17C9890B2B3CC1D60043ECDD /* NewFormViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFormViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				17C94A382B35A44F006AA698 /* ListViewViewModel.swift */,
+				17C9890B2B3CC1D60043ECDD /* NewFormViewViewModel.swift */,
 				17949C692B34BD0100CCABE0 /* RegistrationViewViewModel.swift */,
 				17949C6A2B34BD0100CCABE0 /* NewItemViewViewModel.swift */,
 				17949C6B2B34BD0100CCABE0 /* LoginViewViewModel.swift */,
@@ -362,6 +365,7 @@
 				17B4AE282B39F44600DB3B3A /* PasswordMenuView.swift in Sources */,
 				1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */,
 				17949C6C2B34BD0100CCABE0 /* RegistrationViewViewModel.swift in Sources */,
+				17C9890C2B3CC1D60043ECDD /* NewFormViewViewModel.swift in Sources */,
 				17949C622B34BCCE00CCABE0 /* LoginView.swift in Sources */,
 				17B4AE2C2B3A0BBD00DB3B3A /* LockedFormView.swift in Sources */,
 				17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */,

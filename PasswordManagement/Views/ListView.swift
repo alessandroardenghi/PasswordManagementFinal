@@ -15,8 +15,7 @@ struct ListView: View {
     @StateObject var viewModel = ListViewViewModel()
     @Query private var items: [LoginInfoItem]
     @State var search: String = ""
-    @State var tutorial_seen: Bool = false
-    @State var first_access: Bool = true
+    @State var first_time_tutorial: Bool = false
     @State var tutorial: Bool = false
     
     var body: some View {
@@ -62,8 +61,8 @@ struct ListView: View {
             .searchable(text: $search)
             .toolbar {
                 Button {
-                    if !tutorial_seen && first_access {
-                        tutorial_seen = true
+                    if UserDefaults.standard.value(forKey: "TUTORIAL") == nil {
+                        first_time_tutorial = true
                     }
                     else {
                         viewModel.new_item = true
@@ -72,8 +71,8 @@ struct ListView: View {
             label: {
                 Image(systemName: "plus")
             }
-            .sheet(isPresented: $tutorial_seen) {
-                TutorialView(tutorial_not_seen: $tutorial_seen, first_access: $first_access)
+            .sheet(isPresented: $first_time_tutorial) {
+                TutorialView(tutorial_not_seen: $first_time_tutorial)
             }
             .sheet(isPresented: $viewModel.new_item) {
                 NewItemView(new_item_inserted: $viewModel.new_item)
@@ -89,7 +88,7 @@ struct ListView: View {
                 Image(systemName: "questionmark.circle")
                 }
             .sheet(isPresented: $tutorial) {
-                TutorialView(tutorial_not_seen: $tutorial, first_access: $first_access)
+                TutorialView(tutorial_not_seen: $tutorial)
                 }
             }
         }

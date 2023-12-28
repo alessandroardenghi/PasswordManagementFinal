@@ -14,7 +14,6 @@ struct TutorialView: View {
     @Environment(\.colorScheme) var colorScheme
     @State var value = 0.0
     @Binding var tutorial_not_seen: Bool
-    @Binding var first_access: Bool
     @Environment(\.presentationMode) var presentationMode
     
     @State var website = "Instagram"
@@ -129,7 +128,7 @@ struct TutorialView: View {
                 
                 LoginButtonView(title: "Got it!", background: .green) {
                     tutorial_not_seen = false
-                    first_access = false
+                    UserDefaults.standard.set(true, forKey: "TUTORIAL")
                 }
                 
                 
