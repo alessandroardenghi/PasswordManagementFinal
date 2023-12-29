@@ -5,6 +5,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 import time
+from selenium.webdriver.chrome.options import Options
 
 def load_selectors():
     with open('selectors.json', 'r') as file:
@@ -31,7 +32,15 @@ def first_step(weblink, username, password, action=None):
     if domain not in selectors:
         return "Website not supported, you might have misspelled the website's link"
 
-    browser = webdriver.Safari()
+    # browser = webdriver.Safari()
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")  # Set in Heroku Config Vars
+
+    browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=chrome_options)
+    
     try:
         browser.get(weblink)
         handle_login(browser, selectors, domain, username, password)
