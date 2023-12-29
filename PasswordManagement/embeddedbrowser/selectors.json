@@ -4,7 +4,7 @@
         "password_field": "//*[@id='loginForm']/div/div[2]/div/label/input",
         "login_button": "//*[@id='loginForm']/div/div[3]",
         "popup_selector": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]"
-    }
+    },
     
     "https://twitter.com/i/flow/login": {
         "username_field": "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input",
