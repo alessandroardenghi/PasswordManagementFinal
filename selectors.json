@@ -1,17 +1,41 @@
 {
-    "https://www.instagram.com/accounts/login/": {
-        "username_field": "//*[@id='loginForm']/div/div[1]/div/label/input",
-        "password_field": "//*[@id='loginForm']/div/div[2]/div/label/input",
-        "login_button": "//*[@id='loginForm']/div/div[3]",
-        "popup_selector": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]"
+    "www.instagram.com": {
+        "username_field": "//*[@id='loginForm']/div[1]/div[3]/div",
+        "password_field": "//*[@id='loginForm']/div[1]/div[4]/div",
+        "login_button": "//*[@id='loginForm']/div[1]/div[6]/button",
+        "popup_selector": "/html/body/div[5]/div[1]/div/div[2]/div/div/div/div/div[2]/div/button[2]",
+        "save_info_button": "//*[@id='mount_0_0_e5']/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div/div/section/div/button",
+        "notification_button": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div[3]/button[2]",
+        "account_button": "//*[@id='mount_0_0_e5']/div/div/div[2]/div/div/div[1]/div[1]/div[1]/div/div/div/div/div[2]/div[8]/div/span/div/a/div/div[2]",
+        "setting_button": "//*[@id='mount_0_0_e5']/div/div/div[2]/div/div/div[1]/div[1]/div[2]/div[2]/section/main/div/header/section/div[1]/div[2]/div/div/svg",
+        "setting_and_privacy": "/html/body/div[6]/div[1]/div/div[2]/div/div/div/div/div[2]/div/div/div/button[4]",
+        "box_to_click": "//*[@id='mount_0_0_4o']/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div/div/div[2]/div[1]/a",
+        "account_center": "//*[@id='mount_0_0_4o']/div/div/div[2]/div/div/div[1]/div[1]/div[2]/section/main/div/div[1]/div/div/div/div[2]/div[1]/a/div[6]/span",
+        "privacy_and_security": "//*[@id='mount_0_0_GX']/div/div[1]/div/div[1]/div/div/div[1]/div[1]/div[2]/div[1]/div[1]/div/div[1]/aside/div/div/div/div/div[3]/div/div[4]/a/div[1]/div/div[2]/span",
+        "change_password_button": "//*[@id='mount_0_0_Fq']/div/div[1]/div/div[1]/div/div/div[1]/div[1]/div[2]/div[1]/div[2]/div/div/div/div[2]/div/main/div/div/div[2]/div[1]/div[2]/div/div/a[1]/div[1]/div/div[1]/div/div/span",
+        "button_password": "//*[@id='mount_0_0_Fq']/div/div[1]/div/div[3]/div/div/div[2]/div/div/div/div/div/div/div/div[3]/div[2]/div[4]/div/div/div[2]/div/div/div[1]",
+        "current_password": "//*[@id='mount_0_0_Fq']/div/div[1]/div/div[3]/div/div/div[2]/div/div/div/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div/div[3]/div/div",
+        "new_password": "//*[@id='mount_0_0_Fq']/div/div[1]/div/div[3]/div/div/div[2]/div/div/div/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div/div[4]/div/div",
+        "repeat_new_password": "//*[@id='mount_0_0_Fq']/div/div[1]/div/div[3]/div/div/div[2]/div/div/div/div/div/div[2]/div/div[3]/div[2]/div[4]/div/div/div[5]/div/div",
+        "save_button": "//*[@id='mount_0_0_Fq']/div/div[1]/div/div[3]/div/div/div[2]/div/div/div/div/div/div[2]/div/div[4]/div[3]/div/div/div/div/div/div/div/div"
     },
     
-    "https://twitter.com/i/flow/login": {
-        "username_field": "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div/div/div/div[5]/label/div/div[2]/div/input",
-        "password_field": "//*[@id='layers']/div[2]/div/div/div/div/div/div[2]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div[2]/div/label/div/div[2]",
-        "login_button": "//*[@id='react-root']/div/div/div[2]/main/div/div/div[1]/div[1]/div/div[3]/div[5]/a/div",
-        "popup_selector": "//*[@id='layers']/div/div/div/div/div/div[2]/div[2]/div/span/span"
-    }
+    "www.twitter.com": {
+        "username_field": "//input[@autocomplete='username']",
+        "next_button": "//div[@role='button' and contains(text(), 'Next')]",
+        "password_field": "//input[@type='password' and @name='password']",
+        "login_button": "//div[contains(@data-testid, 'LoginForm') and @role='button']"
+    },
+
+    "www.github.com": {
+        "username_field": "//input[contains(@id, 'login_field')]",
+        "password_field": "//input[contains(@id, 'password')]",
+        "login_button": "//input[contains(@class, 'btn') and @value='Sign in']"
+    },
     
-    
+    "www.m.faceboo.com": {
+        "username_field": "//input[@name='email' and @type='email']",
+        "password_field": "//input[@name='pass' and @type='password']",
+        "login_button": "//button[@name='login']"
+    }  
 }
