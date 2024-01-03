@@ -17,32 +17,29 @@ struct NewItemView: View {
     @Binding var new_item_inserted: Bool
     @Query private var items: [LoginInfoItem]
     @Environment(\.presentationMode) var presentationMode
+    @State var show_alert = false
+    @State var temp = "random"
+
     
     var body: some View {
         ScrollView {
             VStack (spacing: 2){
                 Text("New Login Info").fontWeight(.heavy)
                     .font(.system(size: 30))
-                                    .foregroundColor(.red)
-                                    .padding(.top)
+                    .foregroundColor(.red)
+                    .padding(.top)
                 
-                NewFormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name")
+                NewFormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name", uuid: $temp)
                 
-                NewFormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email")
+                NewFormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email", uuid: $temp)
                 
-                NewFormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username")
+                NewFormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username", uuid: $temp)
                 
-                NewFormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com")
+                NewFormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com", uuid: $temp)
                 
-                if !viewModel.websiteError.isEmpty {
-                    Text(viewModel.websiteError)
-                        .foregroundColor(.red)
-                        .padding()
-                }
                 
-
-                NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password")
-
+                NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password", uuid: $temp)
+                
                 
                 Text("Subscription")
                     .bold()
@@ -65,7 +62,7 @@ struct NewItemView: View {
                         .datePickerStyle(DefaultDatePickerStyle())
                         .padding(.horizontal)
                         .frame(width: 100)
-                        
+                    
                 }
                 
                 Text("Extras")
@@ -91,29 +88,24 @@ struct NewItemView: View {
                         CheckBoxView(background: .blue, variable: $viewModel.date_of_birth, text: "Date of Birth")
                         
                     }
-                
-                        
+                    
+                    
                 }
                 
                 
                 LoginButtonView(title: "Save", background: .green) {
-                                if viewModel.validateWebsite() {
-                                    if !isDuplicate() {
-                                        save()
-                                        new_item_inserted = true
-                                        presentationMode.wrappedValue.dismiss()
-                                    } else {
-                                        viewModel.showAlert = true
-                                        viewModel.alertMessage = "This website is already saved."
-                                    }
-                                } else {
-                                    new_item_inserted = false
-                                }
-                            }
-                            .alert(isPresented: $viewModel.showAlert) {
-                                Alert(title: Text("Alert"), message: Text(viewModel.alertMessage), dismissButton: .default(Text("OK")))
-                            }
-
+                                   if !viewModel.validate_element() {
+                                       show_alert = true
+                                   } else {
+                                       save()
+                                       new_item_inserted = false
+                                   }
+                               }
+                .alert(isPresented: $show_alert) {
+                    Alert(title: Text(viewModel.alert_title),
+                          message: Text(viewModel.alert_message),
+                          dismissButton: .default(Text("Ok")))
+                }
                 .padding(20)
             }
             
@@ -129,6 +121,7 @@ struct NewItemView: View {
                                      email: viewModel.email,
                                      weblink: viewModel.weblink,
                                      password: viewModel.password,
+                                     oldPassword: "",
                                      subscription: viewModel.subscription,
                                      subscription_date: viewModel.subscription_date,
                                      full_name: viewModel.full_name,
