@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		13DADA6E2B3602BD00F6E566 /* webpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DADA6D2B3602BD00F6E566 /* webpage.swift */; };
+		173794E32B3F37FE00F3E7BB /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173794E22B3F37FE00F3E7BB /* SummaryView.swift */; };
 		1754D54A2B374356005359B1 /* NewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D5492B374356005359B1 /* NewFormView.swift */; };
 		1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D54D2B374A3E005359B1 /* CheckBoxView.swift */; };
+		176AC9852B456FF900269720 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176AC9842B456FF900269720 /* KeychainManager.swift */; };
 		17949C2B2B34BC8600CCABE0 /* PasswordManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */; };
 		17949C2F2B34BC8600CCABE0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2E2B34BC8600CCABE0 /* Item.swift */; };
 		17949C312B34BC8700CCABE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17949C302B34BC8700CCABE0 /* Assets.xcassets */; };
@@ -28,7 +30,7 @@
 		17949C6D2B34BD0100CCABE0 /* NewItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C6A2B34BD0100CCABE0 /* NewItemViewViewModel.swift */; };
 		17949C6E2B34BD0100CCABE0 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C6B2B34BD0100CCABE0 /* LoginViewViewModel.swift */; };
 		17949C712B34BD1B00CCABE0 /* LoginInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C702B34BD1B00CCABE0 /* LoginInfoItem.swift */; };
-		17B4AE282B39F44600DB3B3A /* PasswordMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE272B39F44600DB3B3A /* PasswordMenuView.swift */; };
+		17B4AE282B39F44600DB3B3A /* PasswordOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE272B39F44600DB3B3A /* PasswordOptionsView.swift */; };
 		17B4AE2A2B3A0A9500DB3B3A /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */; };
 		17B4AE2C2B3A0BBD00DB3B3A /* LockedFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */; };
 		17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A382B35A44F006AA698 /* ListViewViewModel.swift */; };
@@ -56,8 +58,10 @@
 
 /* Begin PBXFileReference section */
 		13DADA6D2B3602BD00F6E566 /* webpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webpage.swift; sourceTree = "<group>"; };
+		173794E22B3F37FE00F3E7BB /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		1754D5492B374356005359B1 /* NewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFormView.swift; sourceTree = "<group>"; };
 		1754D54D2B374A3E005359B1 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
+		176AC9842B456FF900269720 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		17949C272B34BC8600CCABE0 /* PasswordManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementApp.swift; sourceTree = "<group>"; };
 		17949C2E2B34BC8600CCABE0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -79,7 +83,7 @@
 		17949C6A2B34BD0100CCABE0 /* NewItemViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewViewModel.swift; sourceTree = "<group>"; };
 		17949C6B2B34BD0100CCABE0 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		17949C702B34BD1B00CCABE0 /* LoginInfoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInfoItem.swift; sourceTree = "<group>"; };
-		17B4AE272B39F44600DB3B3A /* PasswordMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordMenuView.swift; sourceTree = "<group>"; };
+		17B4AE272B39F44600DB3B3A /* PasswordOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordOptionsView.swift; sourceTree = "<group>"; };
 		17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedFormView.swift; sourceTree = "<group>"; };
 		17C94A382B35A44F006AA698 /* ListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewViewModel.swift; sourceTree = "<group>"; };
@@ -186,9 +190,10 @@
 			children = (
 				17C94A3A2B35ACB4006AA698 /* _ */,
 				17949C592B34BCCE00CCABE0 /* ListView.swift */,
+				173794E22B3F37FE00F3E7BB /* SummaryView.swift */,
 				17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */,
 				17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */,
-				17B4AE272B39F44600DB3B3A /* PasswordMenuView.swift */,
+				17B4AE272B39F44600DB3B3A /* PasswordOptionsView.swift */,
 				17C94A3B2B35C349006AA698 /* DetailView.swift */,
 				17949C5B2B34BCCE00CCABE0 /* NewItemView.swift */,
 				17949C5F2B34BCCE00CCABE0 /* ContentView.swift */,
@@ -204,6 +209,7 @@
 				17949C692B34BD0100CCABE0 /* RegistrationViewViewModel.swift */,
 				17949C6A2B34BD0100CCABE0 /* NewItemViewViewModel.swift */,
 				17949C6B2B34BD0100CCABE0 /* LoginViewViewModel.swift */,
+				176AC9842B456FF900269720 /* KeychainManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -362,9 +368,11 @@
 			files = (
 				1754D54A2B374356005359B1 /* NewFormView.swift in Sources */,
 				17949C672B34BCCE00CCABE0 /* ContentView.swift in Sources */,
-				17B4AE282B39F44600DB3B3A /* PasswordMenuView.swift in Sources */,
+				17B4AE282B39F44600DB3B3A /* PasswordOptionsView.swift in Sources */,
 				1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */,
+				176AC9852B456FF900269720 /* KeychainManager.swift in Sources */,
 				17949C6C2B34BD0100CCABE0 /* RegistrationViewViewModel.swift in Sources */,
+				173794E32B3F37FE00F3E7BB /* SummaryView.swift in Sources */,
 				17C9890C2B3CC1D60043ECDD /* NewFormViewViewModel.swift in Sources */,
 				17949C622B34BCCE00CCABE0 /* LoginView.swift in Sources */,
 				17B4AE2C2B3A0BBD00DB3B3A /* LockedFormView.swift in Sources */,

@@ -21,11 +21,24 @@ struct ContentView: View {
         else {
             
             if is_logged_in {
-                ListView()
+                mainView
             }
             else {
                 LoginView(is_logged_in: $is_logged_in)
             }
+        }
+    }
+    @ViewBuilder
+    var mainView: some View {
+        TabView {
+            ListView()
+                .tabItem {
+                    Label("Home", systemImage: "house")
+                }
+            SummaryView()
+                .tabItem {
+                    Label("Summary", systemImage: "chart.bar")
+                }
         }
     }
 }

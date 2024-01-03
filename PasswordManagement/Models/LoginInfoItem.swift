@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class LoginInfoItem : Identifiable {
+final class LoginInfoItem : Identifiable{
     
     @Attribute(.unique) var id: String
     var website: String

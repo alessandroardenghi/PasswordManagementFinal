@@ -11,6 +11,7 @@ import SwiftData
 
 struct NewItemView: View {
     @StateObject var viewModel = NewItemViewViewModel()
+    @StateObject var Keychain = KeychainManager()
     @Environment(\.modelContext) private var context
     @Environment(\.colorScheme) var colorScheme
     @State var value = 0.0
@@ -118,19 +119,27 @@ struct NewItemView: View {
        }
 
     func save() {
-            let item = LoginInfoItem(website: viewModel.website,
-                                     username: viewModel.username,
-                                     email: viewModel.email,
-                                     weblink: viewModel.weblink,
-                                     password: viewModel.password,
-                                     subscription: viewModel.subscription,
-                                     subscription_date: viewModel.subscription_date,
-                                     full_name: viewModel.full_name,
-                                     address: viewModel.address,
-                                     credit_card: viewModel.credit_card,
-                                     date_of_birth: viewModel.date_of_birth)
-            context.insert(item)
+        let item = LoginInfoItem(website: viewModel.website,
+                                 username: viewModel.username,
+                                 email: viewModel.email,
+                                 weblink: viewModel.weblink,
+                                 password: viewModel.password,
+                                 subscription: viewModel.subscription,
+                                 subscription_date: viewModel.subscription_date,
+                                 full_name: viewModel.full_name,
+                                 address: viewModel.address,
+                                 credit_card: viewModel.credit_card,
+                                 date_of_birth: viewModel.date_of_birth)
+        context.insert(item)
+        /*
+        do {
+            try Keychain.save(id: item.id, data: JSONEncoder().encode(item))
         }
+        catch {
+            print(error)
+        }
+        */
+    }
 }
 
 #Preview {
