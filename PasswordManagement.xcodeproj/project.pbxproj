@@ -28,7 +28,7 @@
 		17949C6D2B34BD0100CCABE0 /* NewItemViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C6A2B34BD0100CCABE0 /* NewItemViewViewModel.swift */; };
 		17949C6E2B34BD0100CCABE0 /* LoginViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C6B2B34BD0100CCABE0 /* LoginViewViewModel.swift */; };
 		17949C712B34BD1B00CCABE0 /* LoginInfoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C702B34BD1B00CCABE0 /* LoginInfoItem.swift */; };
-		17B4AE282B39F44600DB3B3A /* PasswordMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE272B39F44600DB3B3A /* PasswordMenuView.swift */; };
+		17B4AE282B39F44600DB3B3A /* PasswordOptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE272B39F44600DB3B3A /* PasswordOptionsView.swift */; };
 		17B4AE2A2B3A0A9500DB3B3A /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */; };
 		17B4AE2C2B3A0BBD00DB3B3A /* LockedFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */; };
 		17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A382B35A44F006AA698 /* ListViewViewModel.swift */; };
@@ -79,7 +79,7 @@
 		17949C6A2B34BD0100CCABE0 /* NewItemViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewItemViewViewModel.swift; sourceTree = "<group>"; };
 		17949C6B2B34BD0100CCABE0 /* LoginViewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewViewModel.swift; sourceTree = "<group>"; };
 		17949C702B34BD1B00CCABE0 /* LoginInfoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginInfoItem.swift; sourceTree = "<group>"; };
-		17B4AE272B39F44600DB3B3A /* PasswordMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordMenuView.swift; sourceTree = "<group>"; };
+		17B4AE272B39F44600DB3B3A /* PasswordOptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordOptionsView.swift; sourceTree = "<group>"; };
 		17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedFormView.swift; sourceTree = "<group>"; };
 		17C94A382B35A44F006AA698 /* ListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewViewModel.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 				17949C592B34BCCE00CCABE0 /* ListView.swift */,
 				17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */,
 				17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */,
-				17B4AE272B39F44600DB3B3A /* PasswordMenuView.swift */,
+				17B4AE272B39F44600DB3B3A /* PasswordOptionsView.swift */,
 				17C94A3B2B35C349006AA698 /* DetailView.swift */,
 				17949C5B2B34BCCE00CCABE0 /* NewItemView.swift */,
 				17949C5F2B34BCCE00CCABE0 /* ContentView.swift */,
@@ -362,7 +362,7 @@
 			files = (
 				1754D54A2B374356005359B1 /* NewFormView.swift in Sources */,
 				17949C672B34BCCE00CCABE0 /* ContentView.swift in Sources */,
-				17B4AE282B39F44600DB3B3A /* PasswordMenuView.swift in Sources */,
+				17B4AE282B39F44600DB3B3A /* PasswordOptionsView.swift in Sources */,
 				1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */,
 				17949C6C2B34BD0100CCABE0 /* RegistrationViewViewModel.swift in Sources */,
 				17C9890C2B3CC1D60043ECDD /* NewFormViewViewModel.swift in Sources */,
