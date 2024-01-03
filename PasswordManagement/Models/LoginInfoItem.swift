@@ -17,6 +17,7 @@ final class LoginInfoItem : Identifiable {
     var email: String
     var weblink: String
     var password: String
+    var oldPassword: String
     var subscription: Bool
     var subscription_date: Date = Date()
     var full_name: Bool
@@ -30,6 +31,7 @@ final class LoginInfoItem : Identifiable {
          email: String,
          weblink: String,
          password: String,
+         oldPassword: String,
          subscription: Bool,
          subscription_date: Date = Date(),
          full_name: Bool,
@@ -43,6 +45,7 @@ final class LoginInfoItem : Identifiable {
         self.email = email
         self.weblink = weblink
         self.password = password
+        self.oldPassword = oldPassword
         self.subscription = subscription
         self.subscription_date = subscription_date
         self.full_name = full_name
