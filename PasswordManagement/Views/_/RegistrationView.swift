@@ -117,3 +117,7 @@ struct PasswordStrengthIndicator: View {
             .animation(.easeInOut, value: password.count)
     }
 }
+
+#Preview {
+    RegistrationView(is_registered: Binding(get: {return true}, set: {_ in}))
+}

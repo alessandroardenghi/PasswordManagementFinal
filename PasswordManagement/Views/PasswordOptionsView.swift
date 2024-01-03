@@ -30,6 +30,14 @@ struct PasswordOptionsView: View {
             Toggle("Include Numbers", isOn: $includeNumbers)
                 .padding()
             
+            PasswordStrengthIndicator(password: $variable)
+            let password_strength = password_strength_func(variable: variable)
+            Text(password_strength.text)
+                .font(.caption)
+                .foregroundColor(password_strength.color)
+                .padding(.bottom, 1)
+
+            
             Button("Generate Password") {
                 generatedPassword = generatePassword()
                 variable = generatedPassword // Set the generated password to the box
@@ -63,4 +71,17 @@ struct PasswordOptionsView: View {
         
         return password
     }
+    
+    func password_strength_func(variable: String) -> (text: String, color: Color) {
+            switch variable.count {
+            case 0:
+                return ("Enter a password", .gray)
+            case 1..<8:
+                return ("Password strength: Weak", .red)
+            case 8..<12:
+                return ("Password strength: Moderate", .yellow)
+            default:
+                return ("Password strength: Good", .green)
+            }
+        }
 }
