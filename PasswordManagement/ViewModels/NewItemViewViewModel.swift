@@ -40,21 +40,21 @@ class NewItemViewViewModel: ObservableObject {
     // Function to validate the website name
     
     
-    func validate_element() -> Bool {
+    func validate_element(website: String, username: String, email: String, password: String) -> Bool {
         
-        if self.website.isEmpty {
+        if website.isEmpty {
             alert_title = "website is empty"
             alert_message = "please fill up the website"
             return false
         }
         
-        if (self.username.isEmpty && self.email.isEmpty) {
+        if (username.isEmpty && email.isEmpty) {
             alert_title = "both email and username are empty"
             alert_message = "please fill up either one"
             return false
         }
         
-        if self.password.isEmpty {
+        if password.isEmpty {
             alert_title = "password is empty"
             alert_message = "please insert a valid password"
             return false

@@ -144,6 +144,7 @@ struct NewFormView: View {
                             show_website_error = true
                         }
                     }
+                    
             }
            
             if show_weblink_error {
@@ -173,7 +174,7 @@ struct NewFormView: View {
             return false
         }
         for item in items {
-            if uuid != item.id && LCS(item.password, variable) > 4 {
+            if uuid != item.id && LCS(KeychainManager().get(id: item.id)!.password, variable) > 4 {
                 alert_text = "password too similar to another stored password"
                 return false
             }

@@ -26,9 +26,9 @@ final class KeychainItem : Codable, Identifiable{
     var subscription: Bool
     var full_name: Bool
     var address: Bool
+    var extras: Bool 
     var credit_card: Bool
     var date_of_birth: Bool
-    var bookmark: Bool
     
     init(website: String,
          username: String,
@@ -39,6 +39,7 @@ final class KeychainItem : Codable, Identifiable{
          subscription_date: Date = Date(),
          full_name: Bool,
          address: Bool,
+         extras: Bool,
          credit_card: Bool,
          date_of_birth: Bool) {
         
@@ -52,7 +53,7 @@ final class KeychainItem : Codable, Identifiable{
         self.full_name = full_name
         self.address = address
         self.credit_card = credit_card
+        self.extras = extras
         self.date_of_birth = date_of_birth
-        self.bookmark = false
     }
 }

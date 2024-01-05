@@ -14,40 +14,41 @@ struct ListView: View {
     @Environment(\.modelContext) var context
     @StateObject var viewModel = ListViewViewModel()
     @Query private var items: [LoginInfoItem]
+    @StateObject var Keychain = KeychainManager()
     @State var search: String = ""
     @State var first_time_tutorial: Bool = false
     @State var tutorial: Bool = false
+    @State var secure_variables: [KIandLIT] = []
     
     var body: some View {
         
         NavigationView {
             List {
-                ForEach(searchable_items) {item in
-                    
-                    NavigationLink(destination: DetailView(variable: item)) {
+                ForEach(secure_variables.indices, id:\.self) {index in
+                    NavigationLink(destination: DetailView(variable: $secure_variables[index].item, secure_variable: $secure_variables[index].secure_variable)) {
                         HStack {
                             VStack(alignment: .leading) {
-                                Text("\(item.website)")
+                                Text("\(secure_variables[index].secure_variable.website)")
                                     .font(.headline)
                                 
-                                Text("\(item.username)")
+                                Text("\(secure_variables[index].secure_variable.username)")
                                     .font(.subheadline)
                                 
                             }
                             Spacer()
-                            Image(systemName: item.bookmark ? "bookmark.fill" : "bookmark")
+                            Image(systemName: secure_variables[index].item.bookmark ? "bookmark.fill" : "bookmark")
                                 .foregroundColor(.blue)
                         }
                         .swipeActions {
                             Button(role: .destructive) {
-                                context.delete(item)
+                                context.delete(secure_variables[index].item)
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }
                         }
                         .swipeActions {
                             Button() {
-                                item.bookmark.toggle()
+                                secure_variables[index].item.bookmark.toggle()
                             } label: {
                                 Label("Bookmark", systemImage: "bookmark.fill")
                             }
@@ -92,6 +93,13 @@ struct ListView: View {
                 }
             }
         }
+        .onAppear {
+            getItemsFromKeychain(items: searchable_items)
+        }
+        .onChange(of: searchable_items) { _ in
+            getItemsFromKeychain(items: searchable_items)
+        }
+        
     }
         
         var sorted_items: [LoginInfoItem] {
@@ -104,11 +112,31 @@ struct ListView: View {
             if search.isEmpty {
                 return sorted_items
             } else {
-                return sorted_items.filter { $0.website.lowercased().contains(search.lowercased()) }
+                return sorted_items.filter { Keychain.get(id: $0.id)!.website.lowercased().contains(search.lowercased()) }
             }
         }
-        
     
+    class KIandLIT: Identifiable {
+        @Attribute(.unique) var id: String
+        var secure_variable: KeychainItem
+        var item: LoginInfoItem
+        
+        init(secure_variable: KeychainItem, item: LoginInfoItem) {
+            
+            self.id = UUID().uuidString
+            self.secure_variable = secure_variable
+            self.item = item
+        }
+    }
+
+    func getItemsFromKeychain(items: [LoginInfoItem]){
+        secure_variables = []
+        for item in items {
+            if let keychainItem = Keychain.get(id: item.id) {
+                secure_variables.append(KIandLIT(secure_variable: keychainItem, item: item))
+                }
+            }
+    }
 }
 
 #Preview {
