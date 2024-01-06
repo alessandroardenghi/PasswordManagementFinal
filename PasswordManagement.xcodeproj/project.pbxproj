@@ -34,6 +34,7 @@
 		17B4AE2A2B3A0A9500DB3B3A /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */; };
 		17B4AE2C2B3A0BBD00DB3B3A /* LockedFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */; };
 		17C1E56F2B47708B00E5DA1B /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1E56E2B47708B00E5DA1B /* KeychainItem.swift */; };
+		17C1E5712B4992AC00E5DA1B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1E5702B4992AC00E5DA1B /* NotificationManager.swift */; };
 		17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A382B35A44F006AA698 /* ListViewViewModel.swift */; };
 		17C94A3C2B35C349006AA698 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A3B2B35C349006AA698 /* DetailView.swift */; };
 		17C94A3E2B35C444006AA698 /* ButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A3D2B35C444006AA698 /* ButtonListView.swift */; };
@@ -88,6 +89,7 @@
 		17B4AE292B3A0A9500DB3B3A /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
 		17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockedFormView.swift; sourceTree = "<group>"; };
 		17C1E56E2B47708B00E5DA1B /* KeychainItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		17C1E5702B4992AC00E5DA1B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		17C94A382B35A44F006AA698 /* ListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewViewModel.swift; sourceTree = "<group>"; };
 		17C94A3B2B35C349006AA698 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		17C94A3D2B35C444006AA698 /* ButtonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListView.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 		17949C682B34BD0100CCABE0 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				17C1E5702B4992AC00E5DA1B /* NotificationManager.swift */,
 				17C94A382B35A44F006AA698 /* ListViewViewModel.swift */,
 				17C9890B2B3CC1D60043ECDD /* NewFormViewViewModel.swift */,
 				17949C692B34BD0100CCABE0 /* RegistrationViewViewModel.swift */,
@@ -381,6 +384,7 @@
 				17949C622B34BCCE00CCABE0 /* LoginView.swift in Sources */,
 				17B4AE2C2B3A0BBD00DB3B3A /* LockedFormView.swift in Sources */,
 				17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */,
+				17C1E5712B4992AC00E5DA1B /* NotificationManager.swift in Sources */,
 				17949C632B34BCCE00CCABE0 /* NewItemView.swift in Sources */,
 				17949C652B34BCCE00CCABE0 /* LoginButtonView.swift in Sources */,
 				17C94A3E2B35C444006AA698 /* ButtonListView.swift in Sources */,

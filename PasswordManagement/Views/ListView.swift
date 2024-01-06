@@ -19,13 +19,14 @@ struct ListView: View {
     @State var first_time_tutorial: Bool = false
     @State var tutorial: Bool = false
     @State var secure_variables: [KIandLIT] = []
+    @StateObject var Notification = NotificationManager()
     
     var body: some View {
         
         NavigationView {
             List {
                 ForEach(secure_variables.indices, id:\.self) {index in
-                    NavigationLink(destination: DetailView(variable: $secure_variables[index].item, secure_variable: $secure_variables[index].secure_variable, old_password: secure_variables[index].secure_variable.password)) {
+                    NavigationLink(destination: DetailView(variable: $secure_variables[index].item, secure_variable: $secure_variables[index].secure_variable, old_password: secure_variables[index].secure_variable.password, old_subscription_date: secure_variables[index].item.subscription_date, old_subscription_choice: secure_variables[index].secure_variable.subscription)) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("\(secure_variables[index].secure_variable.website)")
@@ -51,6 +52,12 @@ struct ListView: View {
                             Button(role: .destructive) {
                                 context.delete(secure_variables[index].item)
                                 Keychain.delete(id: secure_variables[index].item.id)
+                                Notification.remove_notification(withIdentifier: secure_variables[index].item.id + "password")
+                                Notification.remove_notification(withIdentifier: secure_variables[index].item.id + "account")
+                                if secure_variables[index].secure_variable.subscription {
+                                    Notification.remove_notification(withIdentifier: secure_variables[index].item.id + "subscription")
+                                }
+                                Notification.see_pending_notifications()
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }
@@ -75,6 +82,10 @@ struct ListView: View {
                         first_time_tutorial = true
                     }
                     else {
+                        let permission = UserDefaults.standard.bool(forKey: "Notifications")
+                        if !permission {
+                            Notification.ask_permission()
+                        }
                         viewModel.new_item = true
                     }
                 }

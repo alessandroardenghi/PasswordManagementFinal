@@ -20,6 +20,7 @@ struct NewItemView: View {
     @Environment(\.presentationMode) var presentationMode
     @State var show_alert = false
     @State var temp = "random"
+    @StateObject var Notification = NotificationManager()
 
     
     var body: some View {
@@ -135,7 +136,13 @@ struct NewItemView: View {
         
         do {
             try Keychain.save(id: item.id, data: JSONEncoder().encode(keychain_item))
+            Notification.add_notification(id: item.id + "password", date: Calendar.current.date(byAdding: .day, value: 90, to: item.password_modification_date)!, title: "Reminder", body: "Time to change your password for \(keychain_item.website)", repeats: false)
+            if keychain_item.subscription {
+                Notification.add_notification(id: item.id + "subscription", date: item.subscription_date, title: "Reminder", body: "Subscription to \(keychain_item.website) expires today", repeats: false)
+            }
+            Notification.add_notification(id: item.id + "account", date: Calendar.current.date(byAdding: .year, value: 1, to: item.password_modification_date)!, title: "Reminder", body: "Your account on \(keychain_item.website) was opened a long time ago. Still using it?", repeats: true)
             print("data saved correctly")
+            Notification.see_pending_notifications()
         }
         catch {
             print(error)

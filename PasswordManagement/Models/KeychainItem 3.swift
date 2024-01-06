@@ -1,0 +1,59 @@
+//
+//  KeychainItem.swift
+//  PasswordManagement
+//
+//  Created by Alessandro Ardenghi on 05/01/24.
+//
+
+//
+//  LoginInfo.swift
+//  SoftwareEngApp
+//
+//  Created by Alessandro Ardenghi on 18/12/23.
+//
+
+import Foundation
+import SwiftData
+
+final class KeychainItem : Codable, Identifiable{
+    
+    @Attribute(.unique) var id: String
+    var website: String
+    var username: String
+    var email: String
+    var weblink: String
+    var password: String
+    var subscription: Bool
+    var full_name: Bool
+    var address: Bool
+    var extras: Bool 
+    var credit_card: Bool
+    var date_of_birth: Bool
+    
+    init(website: String,
+         username: String,
+         email: String,
+         weblink: String,
+         password: String,
+         subscription: Bool,
+         subscription_date: Date = Date(),
+         full_name: Bool,
+         address: Bool,
+         extras: Bool,
+         credit_card: Bool,
+         date_of_birth: Bool) {
+        
+        self.id = UUID().uuidString
+        self.website = website
+        self.username = username
+        self.email = email
+        self.weblink = weblink
+        self.password = password
+        self.subscription = subscription
+        self.full_name = full_name
+        self.address = address
+        self.credit_card = credit_card
+        self.extras = extras
+        self.date_of_birth = date_of_birth
+    }
+}
