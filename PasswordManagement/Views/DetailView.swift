@@ -22,6 +22,9 @@ struct DetailView: View {
     @StateObject var viewModel = NewItemViewViewModel()
     @Environment(\.presentationMode) var presentationMode
     @State var old_password: String
+    @State var old_subscription_date: Date
+    @State var old_subscription_choice: Bool
+    @StateObject var Notification = NotificationManager()
     
     var body: some View {
         ScrollView {
@@ -101,8 +104,20 @@ struct DetailView: View {
                             if secure_variable.password != old_password {
                                 print("Password Change Data Updated")
                                 variable.password_modification_date = Date()
+                                Notification.update_notification(id: variable.id + "password", date: Calendar.current.date(byAdding: .day, value: 90, to: variable.password_modification_date)!, title: "Reminder", body: "Time to change your password for \(secure_variable.website)", repeats: false)
+                                
                             }
+                            
+                            if old_subscription_date != variable.subscription_date {
+                                Notification.update_notification(id: variable.id + "subscription", date: variable.subscription_date, title: "Reminder", body: "Subscription to \(secure_variable.website) expires today", repeats: false)
+                            }
+                            
+                            if old_subscription_choice != secure_variable.subscription {
+                                Notification.add_notification(id: variable.id + "subscription", date: variable.subscription_date, title: "Reminder", body: "Subscription to \(secure_variable.website) expires today", repeats: false)
+                            }
+                            
                             variable.modification_date = Date()
+                            Notification.see_pending_notifications()
                             presentationMode.wrappedValue.dismiss()
                         }
                         catch {

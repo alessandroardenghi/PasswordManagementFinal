@@ -22,7 +22,7 @@ class LoginViewViewModel: ObservableObject {
             return
         }
         
-        // LOGGING IN IF ACCOUNT EXISTS
+        
         if let saved_username = Keychain.get(id: "main_login_info")?.username, let saved_password = Keychain.get(id: "main_login_info")?.password {
             
             if username == saved_username, password == saved_password {
