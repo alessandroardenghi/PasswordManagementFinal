@@ -36,8 +36,10 @@ struct ListView: View {
                                 
                             }
                             Spacer()
-                            let time_passed: Bool = (Calendar.current.dateComponents([.months], from: secure_variables[index].item.password_modification_date, to: Date()).months ?? 0 >= 3)
-                            if time_passed {
+                            let calendar = Calendar.current
+                            let date = calendar.startOfDay(for: secure_variables[index].item.password_modification_date)
+                            let today = calendar.startOfDay(for: Date())
+                            if let time_passed = calendar.dateComponents([.month], from: date, to: today).month, time_passed >= 3 {
                                 Image(systemName: "exclamationmark.triangle")
                                     .foregroundColor(.red)
                             }
