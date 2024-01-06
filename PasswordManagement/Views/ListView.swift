@@ -36,6 +36,12 @@ struct ListView: View {
                                 
                             }
                             Spacer()
+                            let time_passed: Bool = (Calendar.current.dateComponents([.months], from: secure_variables[index].item.password_modification_date, to: Date()).months ?? 0 >= 3)
+                            if time_passed {
+                                Image(systemName: "exclamationmark.triangle")
+                                    .foregroundColor(.red)
+                            }
+                            
                             Image(systemName: secure_variables[index].item.bookmark ? "bookmark.fill" : "bookmark")
                                 .foregroundColor(.blue)
                         }

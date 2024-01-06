@@ -19,6 +19,7 @@ class RegistrationViewViewModel: ObservableObject {
     @Published var is_registered = false
     @StateObject var Keychain = KeychainManager()
     @State var id: String =  "main_login_info"
+    
     init() {}
 
     func registration() {

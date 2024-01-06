@@ -12,7 +12,8 @@ struct ContentView: View {
     
     @State var is_logged_in = false
     @State var is_registered = false
-    @State var Keychain = KeychainManager()
+    @StateObject var Keychain = KeychainManager()
+    
     var body: some View {
     
         if !is_registered && (Keychain.get(id: "main_login_info") == nil) {
