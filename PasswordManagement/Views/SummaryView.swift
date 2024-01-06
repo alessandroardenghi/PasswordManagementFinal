@@ -16,7 +16,7 @@ struct ChartElement: Identifiable {
     let id = UUID()
     let name: String
     let access: [ChartElement]?
-    let associated_LIT: LoginInfoItem?
+    let associated_KI: KeychainItem?
     let Icon: String?
 }
 
@@ -27,36 +27,44 @@ struct SummaryView: View {
     @Environment(\.modelContext) var context
     @Query private var items: [LoginInfoItem]
     @State var is_expanded = false
+    @StateObject var Keychain = KeychainManager()
+    @State var keychain_elements: [KeychainItem] = []
+    
+    
     var body: some View {
         
-        let chartElements1: [ChartElement] = items.filter{$0.subscription}.compactMap { item in
-            ChartElement(name: item.website, access: nil, associated_LIT: item, Icon: nil)
+        
+        let keychain_elements = items.compactMap { get_keychain_info(for: $0.id) }
+        
+        
+        let chartElements1: [ChartElement] = keychain_elements.filter{$0.subscription}.compactMap { item in
+            ChartElement(name: item.website, access: nil, associated_KI: item, Icon: nil)
         }
         
         
-        let chartElements2: [ChartElement] = items.filter{$0.date_of_birth}.compactMap { item in
-            ChartElement(name: item.website, access: nil, associated_LIT: item, Icon: nil)
+        let chartElements2: [ChartElement] = keychain_elements.filter{$0.date_of_birth}.compactMap { item in
+            ChartElement(name: item.website, access: nil, associated_KI: item, Icon: nil)
         }
         
-        let chartElements3: [ChartElement] = items.filter{$0.address}.compactMap { item in
-            ChartElement(name: item.website, access: nil, associated_LIT: item, Icon: nil)
+        let chartElements3: [ChartElement] = keychain_elements.filter{$0.address}.compactMap { item in
+            ChartElement(name: item.website, access: nil, associated_KI: item, Icon: nil)
         }
         
-        let chartElements4: [ChartElement] = items.filter{$0.credit_card}.compactMap { item in
-            ChartElement(name: item.website, access: nil, associated_LIT: item, Icon: nil)
+        let chartElements4: [ChartElement] = keychain_elements.filter{$0.credit_card}.compactMap { item in
+            ChartElement(name: item.website, access: nil, associated_KI: item, Icon: nil)
         }
         
-        let chartElements5: [ChartElement] = items.filter{$0.full_name}.compactMap { item in
-            ChartElement(name: item.website, access: nil, associated_LIT: item, Icon: nil)
+        let chartElements5: [ChartElement] = keychain_elements.filter{$0.full_name}.compactMap { item in
+            ChartElement(name: item.website, access: nil, associated_KI: item, Icon: nil)
         }
         
         
         let data: [ChartElement] = [
-            ChartElement(name: "Subscriptions", access: chartElements1, associated_LIT: nil, Icon: "calendar"),
-            ChartElement(name: "Date of Birth", access: chartElements2, associated_LIT: nil, Icon: "gift"),
-            ChartElement(name: "Address", access: chartElements3, associated_LIT: nil, Icon: "house"),
-            ChartElement(name: "Credit Card", access: chartElements4, associated_LIT: nil, Icon: "creditcard"),
-            ChartElement(name: "Full Name", access: chartElements5, associated_LIT: nil, Icon: "person")]
+            ChartElement(name: "Subscriptions", access: chartElements1, associated_KI: nil, Icon: "calendar"),
+            ChartElement(name: "Date of Birth", access: chartElements2, associated_KI: nil, Icon: "gift"),
+            ChartElement(name: "Address", access: chartElements3, associated_KI: nil, Icon: "house"),
+            ChartElement(name: "Credit Card", access: chartElements4, associated_KI: nil, Icon: "creditcard"),
+            ChartElement(name: "Full Name", access: chartElements5, associated_KI: nil, Icon: "person")]
         
         
         
@@ -89,11 +97,10 @@ struct SummaryView: View {
                             
                             if let icon = item.Icon {
                                         Image(systemName: icon)
-                                            .foregroundColor(.blue) // Customize icon color if needed
+                                            .foregroundColor(.blue)
                                     }
         
-                            if var unwrapped_value = item.associated_LIT {
-                                NavigationLink(destination: DetailView(variable: unwrapped_value)) {
+                            if let unwrapped_value = item.associated_KI {
                                     
                                     VStack(alignment: .leading) {
                                         Text("\(unwrapped_value.website)")
@@ -101,7 +108,6 @@ struct SummaryView: View {
                                         
                                         Text("\(unwrapped_value.username)")
                                             .font(.subheadline)
-                                    }
                                 }
                             } else {
                                 Text("\(item.name): \(item.access?.count ?? 0)")
@@ -112,6 +118,11 @@ struct SummaryView: View {
                 }
             }
         }
+         
+    }
+    func get_keychain_info(for id: String) -> KeychainItem? {
+        
+        return Keychain.get(id: id)
     }
 }
 

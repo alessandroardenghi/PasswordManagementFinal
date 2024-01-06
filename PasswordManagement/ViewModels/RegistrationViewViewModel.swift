@@ -17,17 +17,25 @@ class RegistrationViewViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var error = ""
     @Published var is_registered = false
-
+    @StateObject var Keychain = KeychainManager()
+    @State var id: String =  "main_login_info"
+    
     init() {}
 
     func registration() {
         guard check() else {
             return
         }
-
-        UserDefaults.standard.set(username, forKey: "USERNAME")
-        UserDefaults.standard.set(password, forKey: "PASSWORD")
-        print("all set")
+        
+        let login_info = KeychainItem(website: "", username: username, email: "", weblink: "", password: password, subscription: false, full_name: false, address: false, extras: false, credit_card: false, date_of_birth: false)
+        
+        do {
+            try Keychain.save(id: id, data: JSONEncoder().encode(login_info))
+        }
+        catch {
+            print(error)
+        }
+        
         is_registered = true
     }
 

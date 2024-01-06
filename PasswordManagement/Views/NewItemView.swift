@@ -95,7 +95,7 @@ struct NewItemView: View {
                 
                 
                 LoginButtonView(title: "Save", background: .green) {
-                    if !viewModel.validate_element() {
+                    if !viewModel.validate_element(website: viewModel.website, username: viewModel.username, email: viewModel.email, password: viewModel.password) {
                         show_alert = true
                     }
                     else {
@@ -114,31 +114,33 @@ struct NewItemView: View {
             
         }
     }
-    func isDuplicate() -> Bool {
-           return items.contains(where: { $0.website == viewModel.website })
-       }
 
     func save() {
-        let item = LoginInfoItem(website: viewModel.website,
+        
+        
+        let item = LoginInfoItem(subscription_date: viewModel.subscription_date, modification_date: Date())
+        
+        let keychain_item = KeychainItem(website: viewModel.website,
                                  username: viewModel.username,
                                  email: viewModel.email,
                                  weblink: viewModel.weblink,
                                  password: viewModel.password,
                                  subscription: viewModel.subscription,
-                                 subscription_date: viewModel.subscription_date,
                                  full_name: viewModel.full_name,
                                  address: viewModel.address,
+                                 extras: viewModel.extras,
                                  credit_card: viewModel.credit_card,
                                  date_of_birth: viewModel.date_of_birth)
         context.insert(item)
-        /*
+        
         do {
-            try Keychain.save(id: item.id, data: JSONEncoder().encode(item))
+            try Keychain.save(id: item.id, data: JSONEncoder().encode(keychain_item))
+            print("data saved correctly")
         }
         catch {
             print(error)
         }
-        */
+        
     }
 }
 

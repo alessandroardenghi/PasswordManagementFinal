@@ -35,7 +35,7 @@ class KeychainManager: ObservableObject {
         }
     }
     
-    func get(id: String, data: Data) -> Data? {
+    func get(id: String) -> KeychainItem? {
         
         let query: [String: AnyObject] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -44,9 +44,69 @@ class KeychainManager: ObservableObject {
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
         
-        var result: AnyObject?
-        let _ = SecItemCopyMatching(query as CFDictionary, &result)
+        var retrievedData: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &retrievedData)
+
+        guard status == errSecSuccess, let encodedData = retrievedData as? Data else {
+            print("Failed to retrieve data for ID: \(id)")
+            return nil
+        }
         
-        return result as? Data
+        var decodedObject: KeychainItem?
+        do {
+            decodedObject = try JSONDecoder().decode(KeychainItem.self, from: encodedData)
+            
+        } catch {
+            print("Failed to decode object for ID \(id): \(error)")
+        }
+        
+        return decodedObject
     }
+    
+    func update(id: String, new_data: Data) {
+            
+            let delete_query: [String: AnyObject] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: id as AnyObject
+            ]
+            let delete_status = SecItemDelete(delete_query as CFDictionary)
+
+            guard delete_status == errSecSuccess || delete_status == errSecItemNotFound else {
+                
+                print("Error deleting existing item: \(delete_status)")
+                return
+            }
+
+            
+            let add_query: [String: AnyObject] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrAccount as String: id as AnyObject,
+                kSecValueData as String: new_data as AnyObject
+            ]
+            let add_status = SecItemAdd(add_query as CFDictionary, nil)
+
+            guard add_status == errSecSuccess else {
+                
+                print("Error adding updated item: \(add_status)")
+                return
+            }
+            print("Data updated successfully in Keychain")
+        }
+    
+    func delete(id: String) {
+        
+        let delete_query: [String: AnyObject] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: id as AnyObject
+        ]
+        let delete_status = SecItemDelete(delete_query as CFDictionary)
+
+        guard delete_status == errSecSuccess || delete_status == errSecItemNotFound else {
+            
+            print("Error deleting existing item: \(delete_status)")
+            return
+        }
+
+    }
+    
 }
