@@ -50,12 +50,7 @@ struct PasswordOptionsView: View {
     }
     
     func generatePassword() -> String {
-        // Implement password generation logic based on selected settings
-        // Generate a random password string and return it
-        // Use `passwordLength`, `includeSpecialCharacters`, `includeNumbers`, etc.
-        // to customize the generated password
-        
-        // Sample code (modify as per your requirements)
+
         var allowedCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
         if includeSpecialCharacters {
             allowedCharacters += "!@#$%^&*()_+-=[]{}|;:,.<>?`~"

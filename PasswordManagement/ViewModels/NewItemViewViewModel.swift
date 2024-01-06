@@ -29,7 +29,6 @@ class NewItemViewViewModel: ObservableObject {
     // Variables to handle validation
     @Published var alert_title = ""
     @Published var alert_message = ""
-
     @Published var showAlert: Bool = false
     @Published var alertMessage: String = ""
     
@@ -38,7 +37,6 @@ class NewItemViewViewModel: ObservableObject {
     init() {}
     
     // Function to validate the website name
-    
     
     func validate_element(website: String, username: String, email: String, password: String) -> Bool {
         

@@ -22,8 +22,8 @@ struct LoginButtonView: View {
         .frame(width: 300, height: 50)
         .background(background)
         .cornerRadius(10)
-            }
-        }
+    }
+}
 
 
 

@@ -18,8 +18,7 @@ struct ContentView: View {
     
         if !is_registered && (Keychain.get(id: "main_login_info") == nil) {
                 RegistrationView(is_registered: $is_registered)
-        }
-        else {
+        } else {
             
             if is_logged_in {
                 mainView
@@ -29,6 +28,7 @@ struct ContentView: View {
             }
         }
     }
+    
     @ViewBuilder
     var mainView: some View {
         TabView {

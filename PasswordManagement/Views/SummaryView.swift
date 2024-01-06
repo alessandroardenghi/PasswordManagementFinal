@@ -120,6 +120,7 @@ struct SummaryView: View {
         }
          
     }
+    
     func get_keychain_info(for id: String) -> KeychainItem? {
         
         return Keychain.get(id: id)

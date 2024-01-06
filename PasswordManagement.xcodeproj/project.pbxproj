@@ -13,7 +13,6 @@
 		1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D54D2B374A3E005359B1 /* CheckBoxView.swift */; };
 		176AC9852B456FF900269720 /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176AC9842B456FF900269720 /* KeychainManager.swift */; };
 		17949C2B2B34BC8600CCABE0 /* PasswordManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */; };
-		17949C2F2B34BC8600CCABE0 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2E2B34BC8600CCABE0 /* Item.swift */; };
 		17949C312B34BC8700CCABE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17949C302B34BC8700CCABE0 /* Assets.xcassets */; };
 		17949C342B34BC8700CCABE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17949C332B34BC8700CCABE0 /* Preview Assets.xcassets */; };
 		17949C3E2B34BC8700CCABE0 /* PasswordManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C3D2B34BC8700CCABE0 /* PasswordManagementTests.swift */; };
@@ -37,7 +36,6 @@
 		17C1E5712B4992AC00E5DA1B /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C1E5702B4992AC00E5DA1B /* NotificationManager.swift */; };
 		17C94A392B35A44F006AA698 /* ListViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A382B35A44F006AA698 /* ListViewViewModel.swift */; };
 		17C94A3C2B35C349006AA698 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A3B2B35C349006AA698 /* DetailView.swift */; };
-		17C94A3E2B35C444006AA698 /* ButtonListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C94A3D2B35C444006AA698 /* ButtonListView.swift */; };
 		17C9890C2B3CC1D60043ECDD /* NewFormViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C9890B2B3CC1D60043ECDD /* NewFormViewViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -66,7 +64,6 @@
 		176AC9842B456FF900269720 /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
 		17949C272B34BC8600CCABE0 /* PasswordManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementApp.swift; sourceTree = "<group>"; };
-		17949C2E2B34BC8600CCABE0 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		17949C302B34BC8700CCABE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17949C332B34BC8700CCABE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17949C392B34BC8700CCABE0 /* PasswordManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,7 +89,6 @@
 		17C1E5702B4992AC00E5DA1B /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		17C94A382B35A44F006AA698 /* ListViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewViewModel.swift; sourceTree = "<group>"; };
 		17C94A3B2B35C349006AA698 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		17C94A3D2B35C444006AA698 /* ButtonListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonListView.swift; sourceTree = "<group>"; };
 		17C9890B2B3CC1D60043ECDD /* NewFormViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFormViewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -157,7 +153,6 @@
 				17949C682B34BD0100CCABE0 /* ViewModels */,
 				17949C572B34BCCE00CCABE0 /* Views */,
 				17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */,
-				17949C2E2B34BC8600CCABE0 /* Item.swift */,
 				17949C302B34BC8700CCABE0 /* Assets.xcassets */,
 				17949C322B34BC8700CCABE0 /* Preview Content */,
 			);
@@ -192,7 +187,12 @@
 		17949C572B34BCCE00CCABE0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				17C94A3A2B35ACB4006AA698 /* _ */,
+				1754D54D2B374A3E005359B1 /* CheckBoxView.swift */,
+				1754D5492B374356005359B1 /* NewFormView.swift */,
+				17949C5D2B34BCCE00CCABE0 /* LoginButtonView.swift */,
+				17949C5A2B34BCCE00CCABE0 /* LoginView.swift */,
+				17949C582B34BCCE00CCABE0 /* RegistrationView.swift */,
+				17949C5E2B34BCCE00CCABE0 /* BackView.swift */,
 				17949C592B34BCCE00CCABE0 /* ListView.swift */,
 				173794E22B3F37FE00F3E7BB /* SummaryView.swift */,
 				17B4AE2B2B3A0BBD00DB3B3A /* LockedFormView.swift */,
@@ -226,20 +226,6 @@
 				17C1E56E2B47708B00E5DA1B /* KeychainItem.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		17C94A3A2B35ACB4006AA698 /* _ */ = {
-			isa = PBXGroup;
-			children = (
-				1754D54D2B374A3E005359B1 /* CheckBoxView.swift */,
-				1754D5492B374356005359B1 /* NewFormView.swift */,
-				17949C5D2B34BCCE00CCABE0 /* LoginButtonView.swift */,
-				17949C5A2B34BCCE00CCABE0 /* LoginView.swift */,
-				17C94A3D2B35C444006AA698 /* ButtonListView.swift */,
-				17949C582B34BCCE00CCABE0 /* RegistrationView.swift */,
-				17949C5E2B34BCCE00CCABE0 /* BackView.swift */,
-			);
-			path = _;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,10 +373,8 @@
 				17C1E5712B4992AC00E5DA1B /* NotificationManager.swift in Sources */,
 				17949C632B34BCCE00CCABE0 /* NewItemView.swift in Sources */,
 				17949C652B34BCCE00CCABE0 /* LoginButtonView.swift in Sources */,
-				17C94A3E2B35C444006AA698 /* ButtonListView.swift in Sources */,
 				17949C6E2B34BD0100CCABE0 /* LoginViewViewModel.swift in Sources */,
 				13DADA6E2B3602BD00F6E566 /* webpage.swift in Sources */,
-				17949C2F2B34BC8600CCABE0 /* Item.swift in Sources */,
 				17C94A3C2B35C349006AA698 /* DetailView.swift in Sources */,
 				17949C612B34BCCE00CCABE0 /* ListView.swift in Sources */,
 				17949C662B34BCCE00CCABE0 /* BackView.swift in Sources */,

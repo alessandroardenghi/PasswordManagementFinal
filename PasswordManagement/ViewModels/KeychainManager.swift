@@ -65,19 +65,8 @@ class KeychainManager: ObservableObject {
     
     func update(id: String, new_data: Data) {
             
-            let delete_query: [String: AnyObject] = [
-                kSecClass as String: kSecClassGenericPassword,
-                kSecAttrAccount as String: id as AnyObject
-            ]
-            let delete_status = SecItemDelete(delete_query as CFDictionary)
+            delete(id: id)
 
-            guard delete_status == errSecSuccess || delete_status == errSecItemNotFound else {
-                
-                print("Error deleting existing item: \(delete_status)")
-                return
-            }
-
-            
             let add_query: [String: AnyObject] = [
                 kSecClass as String: kSecClassGenericPassword,
                 kSecAttrAccount as String: id as AnyObject,

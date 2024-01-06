@@ -92,28 +92,43 @@ struct DetailView: View {
                 }
                 
                 LoginButtonView(title: "Save Changes", background: .green) {
-                    if !viewModel.validate_element(website: secure_variable.website, username: secure_variable.username, email: secure_variable.email, password: secure_variable.password) {
+                    if !viewModel.validate_element(website: secure_variable.website, 
+                                                   username: secure_variable.username,
+                                                   email: secure_variable.email,
+                                                   password: secure_variable.password) {
                         show_alert = true
-                    }
-                    else {
+                    } else {
                         do {
+                            // Updating value in Keychain
                             try Keychain.update(id: variable.id, new_data: JSONEncoder().encode(secure_variable))
-                            print("New Password \(secure_variable.password)")
-                            print("Old Password \(old_password)")
 
+                            // If password has changed, update notifications
                             if secure_variable.password != old_password {
-                                print("Password Change Data Updated")
                                 variable.password_modification_date = Date()
-                                Notification.update_notification(id: variable.id + "password", date: Calendar.current.date(byAdding: .day, value: 90, to: variable.password_modification_date)!, title: "Reminder", body: "Time to change your password for \(secure_variable.website)", repeats: false)
+                                Notification.update_notification(id: variable.id + "password", 
+                                                                 date: Calendar.current.date(byAdding: .day, value: 90, to: variable.password_modification_date)!,
+                                                                 title: "Reminder",
+                                                                 body: "Time to change your password for \(secure_variable.website)",
+                                                                 repeats: false)
                                 
                             }
                             
+                            // If subscription date has changed, update notifications
                             if old_subscription_date != variable.subscription_date {
-                                Notification.update_notification(id: variable.id + "subscription", date: variable.subscription_date, title: "Reminder", body: "Subscription to \(secure_variable.website) expires today", repeats: false)
+                                Notification.update_notification(id: variable.id + "subscription", 
+                                                                 date: variable.subscription_date,
+                                                                 title: "Reminder",
+                                                                 body: "Subscription to \(secure_variable.website) expires today",
+                                                                 repeats: false)
                             }
                             
+                            // If subscription was added, add notification
                             if old_subscription_choice != secure_variable.subscription {
-                                Notification.add_notification(id: variable.id + "subscription", date: variable.subscription_date, title: "Reminder", body: "Subscription to \(secure_variable.website) expires today", repeats: false)
+                                Notification.add_notification(id: variable.id + "subscription", 
+                                                              date: variable.subscription_date,
+                                                              title: "Reminder",
+                                                              body: "Subscription to \(secure_variable.website) expires today",
+                                                              repeats: false)
                             }
                             
                             variable.modification_date = Date()

@@ -1,12 +1,3 @@
-//
-//  LoginView.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 17/12/23.
-//
-
-// ALE B: login ok, forse cambiare grafica ma overall CHECKED
-
 import Foundation
 import SwiftUI
 
@@ -16,6 +7,7 @@ struct LoginView: View {
     @Environment(\.colorScheme) var colorScheme
     @Binding var is_logged_in: Bool
     @State var visible = false
+    
     var body: some View {
         ZStack {
             
@@ -82,7 +74,6 @@ struct LoginView: View {
             }
             
         }
-        
         
     }
     

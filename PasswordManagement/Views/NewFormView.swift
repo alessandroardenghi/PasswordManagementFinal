@@ -1,9 +1,3 @@
-//
-//  NewFormView.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 23/12/23.
-//
 import Foundation
 import SwiftUI
 import SwiftData
@@ -17,7 +11,7 @@ struct NewFormView: View {
     @State var visible = false
     @State var locked = true
     @State var change_password = false
-    @State private var length = 8
+    @State var length = 8
     @State var special_characters: Bool = true
     @State var numbers: Bool = true
     @State var alert_text = ""
@@ -25,10 +19,8 @@ struct NewFormView: View {
     @State var show_weblink_error = false
     @State var show_website_error = false
     @Binding var uuid: String
-    
     @Environment(\.modelContext) var context
     @Query private var items: [LoginInfoItem]
-    
     
     
     var body: some View {
@@ -104,7 +96,7 @@ struct NewFormView: View {
                     .background(.blue)
                     .cornerRadius(10)
                     
-                    // BUTTON TO CHANGE PASSWORD
+                    // BUTTON TO GENERATE NEW PASSWORD PASSWORD
                     Button(action: {
                         change_password.toggle()
                     }) {
@@ -201,6 +193,7 @@ struct NewFormView: View {
                 }
             }
         }
+        
         return max_length
     }
     

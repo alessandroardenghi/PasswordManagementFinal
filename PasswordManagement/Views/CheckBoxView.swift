@@ -1,10 +1,3 @@
-//
-//  GeneralPasswordView.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 23/12/23.
-//
-
 import Foundation
 import SwiftUI
 
@@ -31,6 +24,6 @@ struct CheckBoxView: View {
             .cornerRadius(10)
         }
         .padding(.horizontal, 50)
-            }
-        }
+    }
+}
 

@@ -1,15 +1,9 @@
-//
-//  ListView.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 19/12/23.
-//
-
 import Foundation
 import SwiftUI
 import SwiftData
 
 struct ListView: View {
+    
     @State private var new_item = false
     @Environment(\.modelContext) var context
     @StateObject var viewModel = ListViewViewModel()
@@ -37,23 +31,34 @@ struct ListView: View {
                                 
                             }
                             Spacer()
+                            
+                            // ICON TO REMIND TO CHANGE THE PASSWORD
+                            
                             let calendar = Calendar.current
                             let date = calendar.startOfDay(for: secure_variables[index].item.password_modification_date)
                             let today = calendar.startOfDay(for: Date())
-                            if let time_passed = calendar.dateComponents([.month], from: date, to: today).month, time_passed >= 3 {
+                            if let time_passed = calendar.dateComponents([.day], from: date, to: today).day, time_passed >= 90 {
                                 Image(systemName: "exclamationmark.triangle")
                                     .foregroundColor(.red)
                             }
+                            
+                            // ICON TO SHOW BOOKMARKED ITEMS
                             
                             Image(systemName: secure_variables[index].item.bookmark ? "bookmark.fill" : "bookmark")
                                 .foregroundColor(.blue)
                         }
                         .swipeActions {
                             Button(role: .destructive) {
+                                
+                                // DELETING ALL DATA RELATIVE TO THE VARIABLE
                                 context.delete(secure_variables[index].item)
+                                
                                 Keychain.delete(id: secure_variables[index].item.id)
+                                
                                 Notification.remove_notification(withIdentifier: secure_variables[index].item.id + "password")
+                                
                                 Notification.remove_notification(withIdentifier: secure_variables[index].item.id + "account")
+                                
                                 if secure_variables[index].secure_variable.subscription {
                                     Notification.remove_notification(withIdentifier: secure_variables[index].item.id + "subscription")
                                 }
@@ -116,25 +121,25 @@ struct ListView: View {
         .onAppear {
             getItemsFromKeychain(items: searchable_items)
         }
-        .onChange(of: searchable_items) { _ in
+        .onChange(of: searchable_items) { 
             getItemsFromKeychain(items: searchable_items)
         }
         
     }
         
-        var sorted_items: [LoginInfoItem] {
-            let trueConditionItems = items.filter { $0.bookmark }
-            let falseConditionItems = items.filter { !$0.bookmark }
-            return trueConditionItems + falseConditionItems
-        }
+    var sorted_items: [LoginInfoItem] {
+        let trueConditionItems = items.filter { $0.bookmark }
+        let falseConditionItems = items.filter { !$0.bookmark }
+        return trueConditionItems + falseConditionItems
+    }
         
-        var searchable_items: [LoginInfoItem] {
-            if search.isEmpty {
-                return sorted_items
-            } else {
-                return sorted_items.filter { Keychain.get(id: $0.id)!.website.lowercased().contains(search.lowercased()) }
-            }
+    var searchable_items: [LoginInfoItem] {
+        if search.isEmpty {
+            return sorted_items
+        } else {
+            return sorted_items.filter { Keychain.get(id: $0.id)!.website.lowercased().contains(search.lowercased()) }
         }
+    }
     
     class KIandLIT: Identifiable {
         @Attribute(.unique) var id: String
@@ -154,8 +159,8 @@ struct ListView: View {
         for item in items {
             if let keychainItem = Keychain.get(id: item.id) {
                 secure_variables.append(KIandLIT(secure_variable: keychainItem, item: item))
-                }
             }
+        }
     }
 }
 

@@ -13,7 +13,7 @@ class LoginViewViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var error: String = ""
     @Published var is_logged_in = false
-    @StateObject var Keychain = KeychainManager()
+    @Published var Keychain = KeychainManager()
     
     init() {}
     
@@ -21,7 +21,6 @@ class LoginViewViewModel: ObservableObject {
         guard check() else {
             return
         }
-        
         
         if let saved_username = Keychain.get(id: "main_login_info")?.username, let saved_password = Keychain.get(id: "main_login_info")?.password {
             
@@ -48,8 +47,6 @@ class LoginViewViewModel: ObservableObject {
         
         error = ""
         return true
-        
-        
         
     }
 }

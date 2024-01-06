@@ -1,12 +1,3 @@
-//
-//  LoginView.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 17/12/23.
-//
-
-// ALE B: aggiungto se password buona o meno con icona --> CODICE MODIFICATO
-
 import Foundation
 import SwiftUI
 

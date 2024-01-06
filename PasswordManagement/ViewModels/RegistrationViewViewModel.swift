@@ -17,7 +17,7 @@ class RegistrationViewViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var error = ""
     @Published var is_registered = false
-    @StateObject var Keychain = KeychainManager()
+    @Published var Keychain = KeychainManager()
     @State var id: String =  "main_login_info"
     
     init() {}

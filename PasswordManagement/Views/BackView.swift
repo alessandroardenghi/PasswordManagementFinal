@@ -1,10 +1,3 @@
-//
-//  BackView.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 19/12/23.
-//
-
 import Foundation
 import SwiftUI
 
