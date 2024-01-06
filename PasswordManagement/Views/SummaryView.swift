@@ -100,7 +100,7 @@ struct SummaryView: View {
                                             .foregroundColor(.blue)
                                     }
         
-                            if var unwrapped_value = item.associated_KI {
+                            if let unwrapped_value = item.associated_KI {
                                     
                                     VStack(alignment: .leading) {
                                         Text("\(unwrapped_value.website)")

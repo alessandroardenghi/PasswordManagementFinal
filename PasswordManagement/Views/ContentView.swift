@@ -12,10 +12,10 @@ struct ContentView: View {
     
     @State var is_logged_in = false
     @State var is_registered = false
-    
+    @State var Keychain = KeychainManager()
     var body: some View {
     
-        if !is_registered && (UserDefaults.standard.string(forKey: "USERNAME") == nil || UserDefaults.standard.string(forKey: "PASSWORD") == nil) {
+        if !is_registered && (Keychain.get(id: "main_login_info") == nil) {
                 RegistrationView(is_registered: $is_registered)
         }
         else {

@@ -21,6 +21,7 @@ struct DetailView: View {
     @State var change: Bool = false
     @StateObject var viewModel = NewItemViewViewModel()
     @Environment(\.presentationMode) var presentationMode
+    @State var old_password: String
     
     var body: some View {
         ScrollView {
@@ -94,6 +95,13 @@ struct DetailView: View {
                     else {
                         do {
                             try Keychain.update(id: variable.id, new_data: JSONEncoder().encode(secure_variable))
+                            print("New Password \(secure_variable.password)")
+                            print("Old Password \(old_password)")
+
+                            if secure_variable.password != old_password {
+                                print("Password Change Data Updated")
+                                variable.password_modification_date = Date()
+                            }
                             variable.modification_date = Date()
                             presentationMode.wrappedValue.dismiss()
                         }

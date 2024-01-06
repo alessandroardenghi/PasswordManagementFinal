@@ -25,7 +25,7 @@ struct ListView: View {
         NavigationView {
             List {
                 ForEach(secure_variables.indices, id:\.self) {index in
-                    NavigationLink(destination: DetailView(variable: $secure_variables[index].item, secure_variable: $secure_variables[index].secure_variable)) {
+                    NavigationLink(destination: DetailView(variable: $secure_variables[index].item, secure_variable: $secure_variables[index].secure_variable, old_password: secure_variables[index].secure_variable.password)) {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("\(secure_variables[index].secure_variable.website)")
@@ -42,6 +42,7 @@ struct ListView: View {
                         .swipeActions {
                             Button(role: .destructive) {
                                 context.delete(secure_variables[index].item)
+                                Keychain.delete(id: secure_variables[index].item.id)
                             } label: {
                                 Label("Delete", systemImage: "trash.fill")
                             }

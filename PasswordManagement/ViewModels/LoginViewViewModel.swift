@@ -13,6 +13,7 @@ class LoginViewViewModel: ObservableObject {
     @Published var username: String = ""
     @Published var error: String = ""
     @Published var is_logged_in = false
+    @StateObject var Keychain = KeychainManager()
     
     init() {}
     
@@ -22,11 +23,9 @@ class LoginViewViewModel: ObservableObject {
         }
         
         // LOGGING IN IF ACCOUNT EXISTS
-        if let saved_username = UserDefaults.standard.string(forKey: "USERNAME"), let saved_password = UserDefaults.standard.string(forKey: "PASSWORD") {
-            print(saved_username)
-            print(saved_password)
+        if let saved_username = Keychain.get(id: "main_login_info")?.username, let saved_password = Keychain.get(id: "main_login_info")?.password {
+            
             if username == saved_username, password == saved_password {
-                print("LOGIN SUCCESSFUL")
                 error = ""
                 is_logged_in = true
                 
