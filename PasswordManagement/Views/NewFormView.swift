@@ -201,7 +201,6 @@ struct NewFormView: View {
                 }
             }
         }
-        print(max_length)
         return max_length
     }
     
