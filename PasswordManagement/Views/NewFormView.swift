@@ -67,8 +67,6 @@ struct NewFormView: View {
                                 show_password_error = true
                             }
                         }
-                        .frame(maxWidth: .infinity)
-                        .padding(.leading)
                 }
                 
                 
@@ -84,9 +82,7 @@ struct NewFormView: View {
                    ButtonRowView2(buttonAction: { change_password.toggle() }, icon: "arrow.triangle.2.circlepath")
                    ButtonRowView2(buttonAction: { UIPasteboard.general.string = variable }, icon: "square.on.square")
                }
-               .frame(width: 300)
-               .padding(.horizontal, 10)
-               .padding(.top, 5)
+
            }
                            
             else {

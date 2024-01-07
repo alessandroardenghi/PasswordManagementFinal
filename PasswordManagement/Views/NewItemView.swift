@@ -34,9 +34,6 @@ struct NewItemView: View {
                 NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password", uuid: $temp, icon: "lock")
                 
                 
-                
-                
-                
                 SubscriptionView(subscription: $viewModel.subscription, subscription_date: $viewModel.subscription_date)
                 
                 ExtrasView(extras: $viewModel.extras,
