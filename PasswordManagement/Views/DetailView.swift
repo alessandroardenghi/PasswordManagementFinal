@@ -27,15 +27,15 @@ struct DetailView: View {
                     .font(.system(size: 30))
                     .padding()
                 
-                NewFormView(title: "Website", variable: $secure_variable.website, secure: false, placeholder: "Enter website", uuid: $variable.id)
+                NewFormView(title: "Website", variable: $secure_variable.website, secure: false, placeholder: "Enter website", uuid: $variable.id, icon: "globe")
                 
-                NewFormView(title: "Email", variable: $secure_variable.email, secure: false, placeholder: "Enter email", uuid: $variable.id)
+                NewFormView(title: "Email", variable: $secure_variable.email, secure: false, placeholder: "Enter email", uuid: $variable.id, icon: "envelope" )
                 
-                NewFormView(title: "Weblink", variable: $secure_variable.weblink, secure: false, placeholder: "https://yourwebsite.com", uuid: $variable.id)
+                NewFormView(title: "Weblink", variable: $secure_variable.weblink, secure: false, placeholder: "https://yourwebsite.com", uuid: $variable.id, icon: "person")
                 
-                NewFormView(title: "Username", variable: $secure_variable.username, secure: false, placeholder: "Enter username", uuid: $variable.id)
+                NewFormView(title: "Username", variable: $secure_variable.username, secure: false, placeholder: "Enter username", uuid: $variable.id, icon: "link")
                 
-                NewFormView(title: "Password", variable: $secure_variable.password, secure: true, placeholder: "Enter password", uuid: $variable.id)
+                NewFormView(title: "Password", variable: $secure_variable.password, secure: true, placeholder: "Enter password", uuid: $variable.id, icon: "lock")
                 
                 Text("Subscription")
                     .bold()

@@ -21,17 +21,21 @@ struct NewFormView: View {
     @Binding var uuid: String
     @Environment(\.modelContext) var context
     @Query private var items: [LoginInfoItem]
+    @State var icon: String
     
     
     var body: some View {
         
-        VStack(alignment: .leading, spacing: 2) {
-            
-            Text(title)
-                .font(.headline)
-                .foregroundColor(shade2)
-                .padding(.top)
-                .padding(.bottom, 5)
+        VStack(alignment: .leading) {
+            Label {
+                Text(title)
+                    .foregroundColor(shade2)
+            } icon: {
+                Image(systemName: icon)
+                    .foregroundColor(shade2)
+            }
+            .padding([.leading, .trailing, .top])
+            .font(.headline)
             
             if secure {
                 
@@ -216,7 +220,8 @@ struct NewFormView_Previews: PreviewProvider {
             variable: .constant("Example"),
             secure: true,
             placeholder: "Enter your text here",
-            uuid: .constant(UUID().uuidString)
+            uuid: .constant(UUID().uuidString),
+            icon: "lock"
         )
         .environment(\.colorScheme, .light)
     }

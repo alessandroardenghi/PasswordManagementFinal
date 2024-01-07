@@ -23,39 +23,49 @@ struct NewItemView: View {
                     .foregroundColor(shade3)
                     .padding(.top)
                 
-                NewFormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name", uuid: $temp)
+                NewFormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name", uuid: $temp, icon: "globe")
                 
-                NewFormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email", uuid: $temp)
+                NewFormView(title: "Email", variable: $viewModel.email, secure: false, placeholder: "Enter email", uuid: $temp, icon: "envelope")
                 
-                NewFormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username", uuid: $temp)
+                NewFormView(title: "Username", variable: $viewModel.username, secure: false, placeholder: "Enter username", uuid: $temp, icon: "person")
                 
-                NewFormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com", uuid: $temp)
+                NewFormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com", uuid: $temp, icon: "link")
                 
-                NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password", uuid: $temp)
+                NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password", uuid: $temp, icon: "lock")
                 
-                Text("Subscription")
-                    .bold()
-                    .foregroundColor(shade2)
-                    .frame(alignment: .leading)
-                    .padding()
+                
+                
+                
+                
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "creditcard")
+                            .foregroundColor(shade2)
+                            .padding(.leading)
+                        Text("Subscription")
+                            .font(.headline)
+                            .foregroundColor(shade2)
+                    }
+                    .padding([.leading, .trailing])
+                }
                 
                 Picker("Select", selection: $viewModel.subscription) {
                     Text("Yes").tag(true)
                     Text("No").tag(false)
                 }
                 .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                .frame(maxWidth: 320)
+                .padding([.leading, .trailing])
+                .frame(width: 350, alignment: .center)
+                .padding(.bottom, 15)
                 
                 
                 if viewModel.subscription {
-                    Text("Select End Date")
-                        .bold()
-                        .padding()
-                    DatePicker("", selection: $viewModel.subscription_date, displayedComponents: .date)
-                        .datePickerStyle(DefaultDatePickerStyle())
-                        .padding(.horizontal)
-                        .frame(width: 100)
+                        
+                        DatePicker("Subscription End Date", selection: $viewModel.subscription_date, displayedComponents: .date)
+                            .datePickerStyle(DefaultDatePickerStyle())
+                            .padding([.leading, .trailing])
+                            .font(.subheadline)
+                            .frame(width: 350, alignment: .leading)
                     
                 }
                 
