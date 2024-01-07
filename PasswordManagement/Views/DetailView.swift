@@ -23,8 +23,8 @@ struct DetailView: View {
         ScrollView {
             VStack (spacing: 2){
                 Text("Login Info")
-                    .bold()
-                    .font(.system(size: 30))
+                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                    .foregroundColor(shade3)
                     .padding()
                 
                 NewFormView(title: "Website", variable: $secure_variable.website, secure: false, placeholder: "Enter website", uuid: $variable.id, icon: "globe")
