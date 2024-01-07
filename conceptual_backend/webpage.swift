@@ -1,72 +1,35 @@
 import SwiftUI
 import WebKit
 
-// this code is not complete yet, thus it is not inserted with the remaining swift files to avoid bugs/crashes. It was used during the trials, before the implementation of the keychain.
+// this code is not implemented yet, thus it is not inserted with the remaining swift files. An implemented version was used during trials before the introduction of the keychain. However, that code is now obsolete.
 // some logic must be modified in order to conneect the text "generate new password" in the New Item View to the bot and the backend system, but it will be done in the nearby future hopefully.
 
-struct WebView: UIViewRepresentable {
-    @Binding var url: URL
-    @Binding var username: String
-    @Binding var password: String
-    @Binding var action: ActionType?
-    @Binding var keychainItem: KeychainItem
+// struct WebView Structure:
+    // Bindings to pass data from SwiftUI to WebView
+    // Bind URL
+    // Bind username
+    // Bind password
+    // Bind action (like changePassword, deleteAccount, etc.)
 
-    func makeUIView(context: Context) -> WKWebView {
-        let webView = WKWebView()
-        webView.navigationDelegate = context.coordinator
-        return webView
-    }
+    // Function makeUIView(context):
+        // Initialize a new web view: WKWebView
 
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        let request = URLRequest(url: url)
-        uiView.load(request)
-    }
+    // Function updateUIView(uiView, context):
+        // create an URL request and load it in the web view
 
-    func makeCoordinator() -> Coordinator {
-        Coordinator(self)
-    }
+    // Define Coordinator class:
 
-    class Coordinator: NSObject, WKNavigationDelegate {
-        var parent: WebView
+        // create a coordinator such that we can handle web view navigation and actions
+        
+            // handle actions when a web page finishes loading
+            // switch based on the action type:
+                // case changePassword:
+                // case deleteAccount:
+                // case deleteSubscription:
+            
+        // Function createRequest(for URL, action):
+            // create a URLRequest for communicating with the backend and set method = POST
+            // prepare the body with necessary data, which will be sent to the python script: so include username, oldPassword, password (the new password generated), ...
+            // convert to JSON and set the URL request
 
-        init(_ parent: WebView) {
-            self.parent = parent
-        }
-
-        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-            guard let action = parent.action else { return }
-            switch action {
-            case .changePassword:
-                let request = createRequest(for: parent.url, action: action)
-                webView.load(request)
-            // the actions of deleting the account and subscription have not been implemented yet
-            case .deleteAccount:
-                break
-            case .deleteSubscription:
-                break
-            default:
-                break
-            }
-        }
-
-        private func createRequest(for url: URL, action: ActionType) -> URLRequest {
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            let body: [String: Any] = [
-                "username": parent.keychainItem.username,
-                "oldPassword": parent.password,
-                "password": parent.keychainItem.password,
-                "url": parent.keychainItem.weblink
-            ]
-            request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-            return request
-        }
-    }
-}
-
-enum ActionType {
-    case changePassword
-    case deleteAccount
-    case deleteSubscription
-}
+// this was the way we set it up initially, however we need to re-implement it with the keychain logic.
