@@ -88,19 +88,12 @@ struct SubscriptionView: View {
             .padding(.bottom, 15)
             
             if subscription {
-                VStack(alignment: .leading) {
-                    Text("Select End Date")
-                        .fontWeight(.semibold)
-                        .foregroundColor(shade2)
-                        .padding([.leading, .trailing])
-                        .padding(.leading)
                     
                     DatePicker("Subscription End Date", selection: $subscription_date, displayedComponents: .date)
                         .datePickerStyle(DefaultDatePickerStyle())
                         .padding([.leading, .trailing])
                         .font(.subheadline)
                         .frame(width: 350, alignment: .leading)
-                }
             }
             
             Text("Select if you have an active subscription")

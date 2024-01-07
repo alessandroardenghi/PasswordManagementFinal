@@ -37,51 +37,14 @@ struct DetailView: View {
                 
                 NewFormView(title: "Password", variable: $secure_variable.password, secure: true, placeholder: "Enter password", uuid: $variable.id, icon: "lock")
                 
-                Text("Subscription")
-                    .bold()
-                    .padding()
+                SubscriptionView(subscription: $secure_variable.subscription, subscription_date: $variable.subscription_date)
                 
-                Picker("Select", selection: $secure_variable.subscription) {
-                    Text("Yes").tag(true)
-                    Text("No").tag(false)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                .frame(maxWidth: 320)
-                
-                if secure_variable.subscription {
-                    Text("Select End Date")
-                        .bold()
-                        .padding()
-                    DatePicker("", selection: $variable.subscription_date, displayedComponents: .date)
-                        .datePickerStyle(DefaultDatePickerStyle())
-                        .padding(.horizontal)
-                        .frame(width: 100)
-                }
-                
-                Text("Extras")
-                    .bold()
-                    .padding()
-                Picker("Select", selection: $extras) {
-                    Text("Yes").tag(true)
-                    Text("No").tag(false)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                .frame(maxWidth: 320)
-                
-                if secure_variable.extras {
-                    VStack(alignment: .leading) {
-                        CheckBoxView(background: .blue, variable: $secure_variable.full_name, text: "Full Name")
-                        
-                        CheckBoxView(background: .blue, variable: $secure_variable.address, text: "Address")
-                        
-                        CheckBoxView(background: .blue, variable: $secure_variable.credit_card, text: "Credit Card")
-                        
-                        CheckBoxView(background: .blue, variable: $secure_variable.date_of_birth, text: "Date of Birth")
-                        
-                    }
-                }
+                ExtrasView(extras: $secure_variable.extras,
+                           full_name: $secure_variable.full_name,
+                           address: $secure_variable.address,
+                           credit_card: $secure_variable.credit_card,
+                           date_of_birth: $secure_variable.date_of_birth,
+                           shade2: Color(red: 0.53, green: 0.81, blue: 0.92))
                 
                 LoginButtonView(title: "Save Changes", background: .green) {
                     if !viewModel.validate_element(website: secure_variable.website, 

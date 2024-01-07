@@ -37,66 +37,15 @@ struct NewItemView: View {
                 
                 
                 
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "creditcard")
-                            .foregroundColor(shade2)
-                            .padding(.leading)
-                        Text("Subscription")
-                            .font(.headline)
-                            .foregroundColor(shade2)
-                    }
-                    .padding([.leading, .trailing])
-                }
+                SubscriptionView(subscription: $viewModel.subscription, subscription_date: $viewModel.subscription_date)
                 
-                Picker("Select", selection: $viewModel.subscription) {
-                    Text("Yes").tag(true)
-                    Text("No").tag(false)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding([.leading, .trailing])
-                .frame(width: 350, alignment: .center)
-                .padding(.bottom, 15)
-                
-                
-                if viewModel.subscription {
-                        
-                        DatePicker("Subscription End Date", selection: $viewModel.subscription_date, displayedComponents: .date)
-                            .datePickerStyle(DefaultDatePickerStyle())
-                            .padding([.leading, .trailing])
-                            .font(.subheadline)
-                            .frame(width: 350, alignment: .leading)
-                    
-                }
-                
-                Text("Extras")
-                    .bold()
-                    .foregroundColor(shade2)
-                    .frame(alignment: .leading)
-                    .padding()
-                Picker("Select", selection: $viewModel.extras) {
-                    Text("Yes").tag(true)
-                    Text("No").tag(false)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
-                .frame(maxWidth: 320)
-                
-                if viewModel.extras {
-                    VStack(alignment: .leading) {
-                        
-                        CheckBoxView(background: shade2, variable: $viewModel.full_name, text: "Full Name")
-                        
-                        CheckBoxView(background: shade2, variable: $viewModel.address, text: "Address")
-                        
-                        CheckBoxView(background: shade2, variable: $viewModel.credit_card, text: "Credit Card")
-                        
-                        CheckBoxView(background: shade2, variable: $viewModel.date_of_birth, text: "Date of Birth")
-                        
-                    }
-                    
-                    
-                }
+                ExtrasView(extras: $viewModel.extras,
+                           full_name: $viewModel.full_name,
+                           address: $viewModel.address,
+                           credit_card: $viewModel.credit_card,
+                           date_of_birth: $viewModel.date_of_birth,
+                           shade2: Color(red: 0.53, green: 0.81, blue: 0.92))
+               
                 
                 
                 LoginButtonView(title: "Save", background: shade3) {
