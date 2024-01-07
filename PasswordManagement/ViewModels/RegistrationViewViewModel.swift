@@ -1,14 +1,3 @@
-//
-//  RegistrationViewViewModel.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 18/12/23.
-//
-
-// ALE B: modificato codice: diviso check per username e password.
-// aggiunto check per lunghezza minima password
-
-
 import Foundation
 import SwiftUI
 
@@ -39,7 +28,6 @@ class RegistrationViewViewModel: ObservableObject {
         is_registered = true
     }
 
-    // Improved function to check input validity
     func check() -> Bool {
         guard !username.trimmingCharacters(in: .whitespaces).isEmpty else {
             error = "Username can't be empty"

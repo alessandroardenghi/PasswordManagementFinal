@@ -1,17 +1,3 @@
-//
-//  KeychainItem.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 05/01/24.
-//
-
-//
-//  LoginInfo.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 18/12/23.
-//
-
 import Foundation
 import SwiftData
 

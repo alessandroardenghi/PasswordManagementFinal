@@ -1,10 +1,3 @@
-//
-//  PasswordManagementApp.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 21/12/23.
-//
-
 import SwiftUI
 import SwiftData
 

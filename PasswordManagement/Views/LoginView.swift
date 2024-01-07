@@ -14,12 +14,10 @@ struct LoginView: View {
             BackView()
             
             VStack {
-                Text("APP DI ALE & ALE")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding()
+                Text("Welcome back!")
+                    .font(.system(size: 44, weight: .bold, design: .rounded))
                 Text("Insert your Username and a Password")
-                    .padding()
+                    .padding(2)
                 TextField("Username", text: $viewModel.username)
                     .padding()
                     .frame(width: 300, height: 50)
@@ -56,6 +54,7 @@ struct LoginView: View {
                                 }) {
                                     Image(systemName: visible ? "eye" : "eye.slash")
                                         .foregroundColor(.blue)
+                                        .padding()
                                 }
                 }
                 LoginButtonView(title: "Login", background: .blue) {
@@ -79,3 +78,6 @@ struct LoginView: View {
     
 }
 
+#Preview {
+    LoginView(is_logged_in: Binding(get: {return true}, set: {_ in}))
+}

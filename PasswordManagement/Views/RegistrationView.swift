@@ -9,17 +9,17 @@ struct RegistrationView: View {
 
     var body: some View {
         ZStack {
-            BackView()
+            // to make the logo show up on dark mode
+            if colorScheme == .dark {BackView3()}
+            else {BackView2()}
 
             VStack {
-                Text("paMa for you")
-                    .font(.largeTitle)
-                    .bold()
+                Text("PAMA")
+                    .font(.system(size: 44, weight: .bold, design: .rounded))
                     .padding()
-                Text("Create a Username and a Password")
-                    .padding()
+                Text("Create a new account")
 
-                TextField("New Username", text: $viewModel.username)
+                TextField("New username", text: $viewModel.username)
                     .padding()
                     .frame(width: 300, height: 50)
                     .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
@@ -31,7 +31,7 @@ struct RegistrationView: View {
                 ZStack(alignment: .trailing) {
     
                     if !visible {
-                        SecureField("Password", text: $viewModel.password)
+                        SecureField("New password", text: $viewModel.password)
                             .padding()
                             .frame(width: 300, height: 50)
                             .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
@@ -51,6 +51,7 @@ struct RegistrationView: View {
                                 }) {
                                     Image(systemName: visible ? "eye" : "eye.slash")
                                         .foregroundColor(.blue)
+                                        .padding()
                                 }
                 }
                 

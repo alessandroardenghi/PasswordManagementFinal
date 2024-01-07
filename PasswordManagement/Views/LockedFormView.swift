@@ -1,15 +1,9 @@
-//
-//  TutorialViewHelper.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 25/12/23.
-//
-
 import Foundation
 import SwiftUI
 
 struct LockedFormView: View {
     let title: String
+    var icon: String
     @Binding var variable: String
     @Environment(\.colorScheme) var colorScheme
     let secure: Bool
@@ -22,11 +16,16 @@ struct LockedFormView: View {
     @State var numbers: Bool = true
 
     var body: some View {
-        VStack (spacing: 2) {
-            
-            Text(title)
-                .bold()
-                .padding()
+        VStack(alignment: .leading) {
+            Label {
+                Text(title)
+                    .foregroundColor(shade2)
+            } icon: {
+                Image(systemName: icon)
+                    .foregroundColor(shade2)
+            }
+            .padding([.leading, .trailing])
+            .font(.headline)
             
             if secure {
                 
@@ -39,7 +38,8 @@ struct LockedFormView: View {
                         .cornerRadius(10)
                         .autocapitalization(.none)
                         .autocorrectionDisabled()
-                } else {
+                } 
+                else {
                     SecureField(placeholder, text: $variable)
                         .padding()
                         .disabled(true)
@@ -48,84 +48,40 @@ struct LockedFormView: View {
                         .cornerRadius(10)
                         .autocapitalization(.none)
                         .autocorrectionDisabled()
+                        .padding(.bottom, 10)
                 }
-                
-                
-                    
-                // BUTTON TO SEE PASSWORD
-                HStack{
-                    Button(action: {
-                        visible.toggle()
-                    }) {
-                        Image(systemName: visible ? "eye" : "eye.slash")
-                            .foregroundColor(.white)
+
+                VStack {
+                        ButtonRowView(buttonAction: {
+                            visible.toggle()
+                        }, icon: visible ? "eye" : "eye.slash", label: "Hide/show password")
+
+                        ButtonRowView(buttonAction: {
+                            locked.toggle()
+                        }, icon: !locked ? "lock.open" : "lock", label: "Lock/unlock password")
+
+                        ButtonRowView(buttonAction: {
+                            change_password.toggle()
+                        }, icon: "arrow.triangle.2.circlepath", label: "Enable the password generator")
+
+                        ButtonRowView(buttonAction: {
+                            UIPasteboard.general.string = variable
+                        }, icon: "square.on.square", label: "Copy password")
                     }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    Spacer()
-                    Text("Hide/show password")
-                }
-                .frame(width: 300)
-                // BUTTON TO LOCK PASSWORD
-                HStack{
-                    Button(action: {
-                        locked.toggle()
-                    }) {
-                        Image(systemName: !locked ? "lock.open" : "lock")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    Spacer()
-                    Text("Lock/unlock password")
-                }
-                .frame(width: 300)
-                // BUTTON TO CHANGE PASSWORD
-                HStack {
-                    Button(action: {
-                        change_password.toggle()
-                    }) {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    Spacer()
-                    Text("Enable the password generator")
-                }
-                .frame(width: 300)
-                // BUTTON TO COPY PASSWORD
-                HStack {
-                    Button(action: {
-                        UIPasteboard.general.string = variable
-                    }) {
-                        Image(systemName: "square.on.square")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    Spacer()
-                    Text("Copy password")
-                }
-                .frame(width: 300)
-            } else {
+                    .frame(width: 300)
+            }
+            
+            else {
                 TextField(placeholder, text: $variable)
                     .padding()
                     .bold()
                     .frame(width: 300, height: 50)
                     .disabled(true)
                     .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
-                    .cornerRadius(10)
+                    .cornerRadius(7)
                     .autocapitalization(.none)
                     .autocorrectionDisabled()
+                    .padding(.bottom, 10)
             }
             
         }
@@ -134,4 +90,24 @@ struct LockedFormView: View {
     
 }
 
+struct ButtonRowView: View {
+    var buttonAction: () -> Void
+    var icon: String
+    var label: String
+    var color: Color = shade2
+
+    var body: some View {
+        HStack {
+            Button(action: buttonAction) {
+                Image(systemName: icon)
+                    .foregroundColor(.white).imageScale(.small)
+                    .frame(width: 25, height: 25)
+                    .background(color)
+                    .cornerRadius(7)
+            }
+            Text(label)
+            Spacer()
+        }
+    }
+}
 

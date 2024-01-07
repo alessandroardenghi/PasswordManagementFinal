@@ -25,12 +25,13 @@ struct NewFormView: View {
     
     var body: some View {
         
-        
-        VStack (spacing: 2) {
+        VStack(alignment: .leading, spacing: 2) {
             
             Text(title)
-                .bold()
-                .padding()
+                .font(.headline)
+                .foregroundColor(shade2)
+                .padding(.top)
+                .padding(.bottom, 5)
             
             if secure {
                 
@@ -39,7 +40,7 @@ struct NewFormView: View {
                         .padding()
                         .disabled(locked)
                         .frame(width: 300, height: 50)
-                        .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                        .background(colorScheme == .dark ? Color.white.opacity(0.1) : Color(UIColor.systemGray6))
                         .cornerRadius(10)
                         .autocapitalization(.none)
                         .autocorrectionDisabled()
@@ -62,7 +63,10 @@ struct NewFormView: View {
                                 show_password_error = true
                             }
                         }
+                        .frame(maxWidth: .infinity)
+                        .padding(.leading)
                 }
+                
                 
                 if show_password_error {
                     Text(alert_text)
@@ -70,57 +74,18 @@ struct NewFormView: View {
                         .bold()
                 }
                 
-                HStack(spacing: 25) {
-                    
-                    // BUTTON TO SEE PASSWORD
-                    Button(action: {
-                        visible.toggle()
-                    }) {
-                        Image(systemName: visible ? "eye" : "eye.slash")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    
-                    // BUTTON TO LOCK PASSWORD
-                    Button(action: {
-                        locked.toggle()
-                    }) {
-                        Image(systemName: !locked ? "lock.open" : "lock")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    
-                    // BUTTON TO GENERATE NEW PASSWORD PASSWORD
-                    Button(action: {
-                        change_password.toggle()
-                    }) {
-                        Image(systemName: "arrow.triangle.2.circlepath")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                    
-                    // BUTTON TO COPY PASSWORD
-                    Button(action: {
-                        UIPasteboard.general.string = variable
-                    }) {
-                        Image(systemName: "square.on.square")
-                            .foregroundColor(.white)
-                    }
-                    
-                    .frame(width: 50, height: 30)
-                    .background(.blue)
-                    .cornerRadius(10)
-                }
-            } else {
+                HStack(spacing: 8) {
+                   ButtonRowView2(buttonAction: { visible.toggle() }, icon: visible ? "eye" : "eye.slash")
+                   ButtonRowView2(buttonAction: { locked.toggle() }, icon: !locked ? "lock.open" : "lock")
+                   ButtonRowView2(buttonAction: { change_password.toggle() }, icon: "arrow.triangle.2.circlepath")
+                   ButtonRowView2(buttonAction: { UIPasteboard.general.string = variable }, icon: "square.on.square")
+               }
+               .frame(width: 300)
+               .padding(.horizontal, 10)
+               .padding(.top, 5)
+           }
+                           
+            else {
                 TextField(placeholder, text: $variable)
                     .padding()
                     .frame(width: 300, height: 50)
@@ -228,3 +193,31 @@ struct NewFormView: View {
     
 }
 
+struct ButtonRowView2: View {
+    var buttonAction: () -> Void
+    var icon: String
+    var color: Color = shade2
+
+    var body: some View {
+        Button(action: buttonAction) {
+            Image(systemName: icon)
+                .foregroundColor(.white).imageScale(.medium)
+                .frame(width: 68, height: 44)
+                .background(color)
+                .cornerRadius(7)
+        }
+    }
+}
+
+struct NewFormView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewFormView(
+            title: "Example Title",
+            variable: .constant("Example"),
+            secure: true,
+            placeholder: "Enter your text here",
+            uuid: .constant(UUID().uuidString)
+        )
+        .environment(\.colorScheme, .light)
+    }
+}

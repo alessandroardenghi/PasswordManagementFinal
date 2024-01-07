@@ -1,12 +1,3 @@
-//
-//  NewItemViewViewModel.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 20/12/23.
-//
-
-// ALE B: make sure the URL is valid
-
 import Foundation
 import SwiftUI
 import SwiftData
@@ -36,25 +27,23 @@ class NewItemViewViewModel: ObservableObject {
     
     init() {}
     
-    // Function to validate the website name
-    
     func validate_element(website: String, username: String, email: String, password: String) -> Bool {
         
         if website.isEmpty {
-            alert_title = "website is empty"
-            alert_message = "please fill up the website"
+            alert_title = "Website is empty"
+            alert_message = "Please fill up the website"
             return false
         }
         
         if (username.isEmpty && email.isEmpty) {
-            alert_title = "both email and username are empty"
-            alert_message = "please fill up either one"
+            alert_title = "Both email and username are empty"
+            alert_message = "Please fill up either one"
             return false
         }
         
         if password.isEmpty {
-            alert_title = "password is empty"
-            alert_message = "please insert a valid password"
+            alert_title = "Password is empty"
+            alert_message = "Please insert a valid password"
             return false
         }
         return true

@@ -19,9 +19,9 @@ struct CheckBoxView: View {
                     .foregroundColor(.white)
             }
             
-            .frame(width: 50, height: 30)
-            .background(.blue)
-            .cornerRadius(10)
+            .frame(width: 30, height: 30)
+            .background(shade2)
+            .cornerRadius(7)
         }
         .padding(.horizontal, 50)
     }

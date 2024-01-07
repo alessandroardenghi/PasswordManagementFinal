@@ -1,10 +1,3 @@
-//
-//  DetailView.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 22/12/23.
-//
-
 import Foundation
 import SwiftUI
 import SwiftData
@@ -43,7 +36,6 @@ struct DetailView: View {
                 NewFormView(title: "Username", variable: $secure_variable.username, secure: false, placeholder: "Enter username", uuid: $variable.id)
                 
                 NewFormView(title: "Password", variable: $secure_variable.password, secure: true, placeholder: "Enter password", uuid: $variable.id)
-                
                 
                 Text("Subscription")
                     .bold()

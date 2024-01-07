@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 17/12/23.
-//
-
 import SwiftUI
 import SwiftData
 
@@ -42,12 +35,4 @@ struct ContentView: View {
                 }
         }
     }
-}
-
-#Preview {
-    let config = ModelConfiguration(isStoredInMemoryOnly: true)
-    let container = try! ModelContainer(for: LoginInfoItem.self, configurations: config)
-
-    return ContentView()
-            .modelContainer(container)
 }

@@ -1,10 +1,3 @@
-//
-//  NewItemView.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 20/12/23.
-//
-
 import Foundation
 import SwiftUI
 import SwiftData
@@ -21,14 +14,13 @@ struct NewItemView: View {
     @State var show_alert = false
     @State var temp = "random"
     @StateObject var Notification = NotificationManager()
-
     
     var body: some View {
         ScrollView {
             VStack (spacing: 2){
-                Text("New Login Info").fontWeight(.heavy)
-                    .font(.system(size: 30))
-                    .foregroundColor(.red)
+                Text("New Login Info")
+                    .font(.system(size: 30, weight: .heavy, design: .rounded))
+                    .foregroundColor(shade3)
                     .padding(.top)
                 
                 NewFormView(title: "Website", variable: $viewModel.website, secure: false, placeholder: "Enter website name", uuid: $temp)
@@ -39,12 +31,12 @@ struct NewItemView: View {
                 
                 NewFormView(title: "Weblink", variable: $viewModel.weblink, secure: false, placeholder: "https://yourwebsitedomain.com", uuid: $temp)
                 
-                
                 NewFormView(title: "Password", variable: $viewModel.password, secure: true, placeholder: "Enter password", uuid: $temp)
-                
                 
                 Text("Subscription")
                     .bold()
+                    .foregroundColor(shade2)
+                    .frame(alignment: .leading)
                     .padding()
                 
                 Picker("Select", selection: $viewModel.subscription) {
@@ -69,6 +61,8 @@ struct NewItemView: View {
                 
                 Text("Extras")
                     .bold()
+                    .foregroundColor(shade2)
+                    .frame(alignment: .leading)
                     .padding()
                 Picker("Select", selection: $viewModel.extras) {
                     Text("Yes").tag(true)
@@ -81,13 +75,13 @@ struct NewItemView: View {
                 if viewModel.extras {
                     VStack(alignment: .leading) {
                         
-                        CheckBoxView(background: .blue, variable: $viewModel.full_name, text: "Full Name")
+                        CheckBoxView(background: shade2, variable: $viewModel.full_name, text: "Full Name")
                         
-                        CheckBoxView(background: .blue, variable: $viewModel.address, text: "Address")
+                        CheckBoxView(background: shade2, variable: $viewModel.address, text: "Address")
                         
-                        CheckBoxView(background: .blue, variable: $viewModel.credit_card, text: "Credit Card")
+                        CheckBoxView(background: shade2, variable: $viewModel.credit_card, text: "Credit Card")
                         
-                        CheckBoxView(background: .blue, variable: $viewModel.date_of_birth, text: "Date of Birth")
+                        CheckBoxView(background: shade2, variable: $viewModel.date_of_birth, text: "Date of Birth")
                         
                     }
                     
@@ -95,7 +89,7 @@ struct NewItemView: View {
                 }
                 
                 
-                LoginButtonView(title: "Save", background: .green) {
+                LoginButtonView(title: "Save", background: shade3) {
                     if !viewModel.validate_element(website: viewModel.website, username: viewModel.username, email: viewModel.email, password: viewModel.password) {
                         show_alert = true
                     }

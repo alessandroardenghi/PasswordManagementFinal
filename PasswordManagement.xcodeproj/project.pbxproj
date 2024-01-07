@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13DADA6E2B3602BD00F6E566 /* webpage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DADA6D2B3602BD00F6E566 /* webpage.swift */; };
 		173794E32B3F37FE00F3E7BB /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173794E22B3F37FE00F3E7BB /* SummaryView.swift */; };
 		1754D54A2B374356005359B1 /* NewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D5492B374356005359B1 /* NewFormView.swift */; };
 		1754D54E2B374A3E005359B1 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1754D54D2B374A3E005359B1 /* CheckBoxView.swift */; };
@@ -15,7 +14,6 @@
 		17949C2B2B34BC8600CCABE0 /* PasswordManagementApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C2A2B34BC8600CCABE0 /* PasswordManagementApp.swift */; };
 		17949C312B34BC8700CCABE0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17949C302B34BC8700CCABE0 /* Assets.xcassets */; };
 		17949C342B34BC8700CCABE0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17949C332B34BC8700CCABE0 /* Preview Assets.xcassets */; };
-		17949C3E2B34BC8700CCABE0 /* PasswordManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C3D2B34BC8700CCABE0 /* PasswordManagementTests.swift */; };
 		17949C482B34BC8700CCABE0 /* PasswordManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C472B34BC8700CCABE0 /* PasswordManagementUITests.swift */; };
 		17949C4A2B34BC8700CCABE0 /* PasswordManagementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C492B34BC8700CCABE0 /* PasswordManagementUITestsLaunchTests.swift */; };
 		17949C602B34BCCE00CCABE0 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17949C582B34BCCE00CCABE0 /* RegistrationView.swift */; };
@@ -57,7 +55,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		13DADA6D2B3602BD00F6E566 /* webpage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webpage.swift; sourceTree = "<group>"; };
 		173794E22B3F37FE00F3E7BB /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
 		1754D5492B374356005359B1 /* NewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFormView.swift; sourceTree = "<group>"; };
 		1754D54D2B374A3E005359B1 /* CheckBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
@@ -67,7 +64,6 @@
 		17949C302B34BC8700CCABE0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		17949C332B34BC8700CCABE0 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		17949C392B34BC8700CCABE0 /* PasswordManagementTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordManagementTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		17949C3D2B34BC8700CCABE0 /* PasswordManagementTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementTests.swift; sourceTree = "<group>"; };
 		17949C432B34BC8700CCABE0 /* PasswordManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordManagementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17949C472B34BC8700CCABE0 /* PasswordManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementUITests.swift; sourceTree = "<group>"; };
 		17949C492B34BC8700CCABE0 /* PasswordManagementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordManagementUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -117,19 +113,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13DADA6C2B36029200F6E566 /* embeddedbrowser */ = {
-			isa = PBXGroup;
-			children = (
-				13DADA6D2B3602BD00F6E566 /* webpage.swift */,
-			);
-			path = embeddedbrowser;
-			sourceTree = "<group>";
-		};
 		17949C1E2B34BC8600CCABE0 = {
 			isa = PBXGroup;
 			children = (
 				17949C292B34BC8600CCABE0 /* PasswordManagement */,
-				17949C3C2B34BC8700CCABE0 /* PasswordManagementTests */,
 				17949C462B34BC8700CCABE0 /* PasswordManagementUITests */,
 				17949C282B34BC8600CCABE0 /* Products */,
 			);
@@ -148,7 +135,6 @@
 		17949C292B34BC8600CCABE0 /* PasswordManagement */ = {
 			isa = PBXGroup;
 			children = (
-				13DADA6C2B36029200F6E566 /* embeddedbrowser */,
 				17949C6F2B34BD1B00CCABE0 /* Models */,
 				17949C682B34BD0100CCABE0 /* ViewModels */,
 				17949C572B34BCCE00CCABE0 /* Views */,
@@ -165,14 +151,6 @@
 				17949C332B34BC8700CCABE0 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		17949C3C2B34BC8700CCABE0 /* PasswordManagementTests */ = {
-			isa = PBXGroup;
-			children = (
-				17949C3D2B34BC8700CCABE0 /* PasswordManagementTests.swift */,
-			);
-			path = PasswordManagementTests;
 			sourceTree = "<group>";
 		};
 		17949C462B34BC8700CCABE0 /* PasswordManagementUITests */ = {
@@ -374,7 +352,6 @@
 				17949C632B34BCCE00CCABE0 /* NewItemView.swift in Sources */,
 				17949C652B34BCCE00CCABE0 /* LoginButtonView.swift in Sources */,
 				17949C6E2B34BD0100CCABE0 /* LoginViewViewModel.swift in Sources */,
-				13DADA6E2B3602BD00F6E566 /* webpage.swift in Sources */,
 				17C94A3C2B35C349006AA698 /* DetailView.swift in Sources */,
 				17949C612B34BCCE00CCABE0 /* ListView.swift in Sources */,
 				17949C662B34BCCE00CCABE0 /* BackView.swift in Sources */,
@@ -390,7 +367,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				17949C3E2B34BC8700CCABE0 /* PasswordManagementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -1,10 +1,3 @@
-//
-//  RegistrationViewViewModel.swift
-//  SoftwareEngApp
-//
-//  Created by Alessandro Ardenghi on 18/12/23.
-//
-
 import Foundation
 import SwiftUI
 
@@ -41,7 +34,7 @@ class LoginViewViewModel: ObservableObject {
     func check() -> Bool{
         
         guard !username.trimmingCharacters(in: .whitespaces).isEmpty, !password.trimmingCharacters(in: .whitespaces).isEmpty else {
-            error = "Username and Password can't be empty"
+            error = "Username and password can't be empty"
             return false
         }
         

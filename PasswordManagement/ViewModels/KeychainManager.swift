@@ -1,10 +1,3 @@
-//
-//  KeychainManager.swift
-//  PasswordManagement
-//
-//  Created by Alessandro Ardenghi on 03/01/24.
-//
-
 import Foundation
 
 class KeychainManager: ObservableObject {
@@ -13,8 +6,6 @@ class KeychainManager: ObservableObject {
         case duplicateEntry
         case unknown(OSStatus)
     }
-    
-    
     
     func save(id: String, data: Data) throws {
         

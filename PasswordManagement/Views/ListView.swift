@@ -31,9 +31,8 @@ struct ListView: View {
                                 
                             }
                             Spacer()
-                            
-                            // ICON TO REMIND TO CHANGE THE PASSWORD
-                            
+
+                            // change password reminder
                             let calendar = Calendar.current
                             let date = calendar.startOfDay(for: secure_variables[index].item.password_modification_date)
                             let today = calendar.startOfDay(for: Date())
@@ -42,15 +41,13 @@ struct ListView: View {
                                     .foregroundColor(.red)
                             }
                             
-                            // ICON TO SHOW BOOKMARKED ITEMS
-                            
+                            // bookmark
                             Image(systemName: secure_variables[index].item.bookmark ? "bookmark.fill" : "bookmark")
                                 .foregroundColor(.blue)
                         }
                         .swipeActions {
                             Button(role: .destructive) {
                                 
-                                // DELETING ALL DATA RELATIVE TO THE VARIABLE
                                 context.delete(secure_variables[index].item)
                                 
                                 Keychain.delete(id: secure_variables[index].item.id)
@@ -79,7 +76,7 @@ struct ListView: View {
                 }
                 
             }
-            .navigationTitle("Login Info")
+            .navigationTitle("Saved accounts")
             .searchable(text: $search)
             .toolbar {
                 Button {
